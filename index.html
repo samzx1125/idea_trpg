@@ -39,10 +39,21 @@
 
 </head>
 <body style="margin: 0; background-color: black;">
-<div class="uk-margin-remove uk-grid-collapse" uk-grid>
+<div class="uk-margin-remove uk-grid-collapse uk-dark" uk-grid>
+    <audio id="id_loop_bgm" loop>
+        <source src="audio/bgm.mp3" type="audio/mpeg">
+        Mic test, One, Two
+    </audio>
+
     <div class="uk-width-1-1 uk-padding-remove">
         <img src="img/Logo_Ig.png">
     </div>
+
+    <div class="uk-width-1-1 uk-margin-medium">
+        <b class=""></b>
+        <hr style="border-top: 1px dashed grey;">
+    </div>
+
 
     <div class="uk-width-1-2">
         <img src="img/Description_01.png">
@@ -51,13 +62,24 @@
         <img src="img/Description_02.png">
     </div>
 
-    <div class="uk-width-1-1" uk-grid>
-        <div class="uk-width-3-4 uk-align-center uk-flex uk-flex-center" uk-grid>
-            <div class="uk-width-1-4">
-                <img src="img/Poster_ghost_door.png">
-            </div>
-        </div>
+    <div class="uk-width-1-1 uk-form-controls">
+        <b class=""></b>
+        <hr style="border-top: 1px dashed grey;">
     </div>
+
+
+    <div class="uk-width-1-1 uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
+        <div class="uk-slider-items uk-child-width-1-3" id="id_script_lightbox" uk-grid uk-lightbox="animation: slide"></div>
+
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href uk-slidenav-previous uk-slider-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href uk-slidenav-next uk-slider-item="next"></a>
+    </div>
+
+    <div class="uk-width-1-1 uk-form-controls">
+        <b class=""></b>
+        <hr class="uk-margin" style="border-top: 1px dashed grey;">
+    </div>
+
 
     <div class="uk-width-1-1 uk-padding-remove" uk-grid>
         <div class="uk-width-1-2">
@@ -77,12 +99,40 @@
                     8.當日帶齊人同供品上黎我地度享受！
                 </p>
                 <div>
-                    <a class="uk-button uk-button-secondary" href="https://google.com" target="_blank">呢度填表</a>
+                    <a class="uk-button uk-button-secondary"
+                       href="https://docs.google.com/forms/d/1G1xbvSOUoGbfT9O-HMBe7ub0wHYsqmExvvMppCxmWlg"
+                       target="_blank">呢度填表</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<script type="application/javascript">
+    var audioPlayer = document.getElementById("id_loop_bgm");
+    window.addEventListener('load', function () {
+        audioPlayer.volume = 0.1;
+        audioPlayer.play();
+    })
+
+    // Define the directory path
+    const posterDirectory = 'img/script_poster/';
+    const posterShowCaseLightBox = $('#id_script_lightbox');
+
+    const posterArray = [
+        {"path": "Poster_ghost_door.png", "name": "鬼門開"},
+        {"path": "Poster_A_A_A_A.jpg", "name": "呀呃啊啊"},
+    ];
+    for (const posterElement of posterArray){
+        posterShowCaseLightBox.append(
+            '<div>' +
+            '<a class="uk-inline" href="' + posterDirectory + posterElement.path + '" data-caption="' + posterElement.name + '" uk-lightbox="{group:\'script-poster\'}">' +
+            "<img src='" + posterDirectory + posterElement.path + "' width='1800' height='1200' alt='" + posterElement.name + "'>" +
+            "</a>" +
+            "</div>"
+        );
+    }
+
+</script>
 </body>
 </html>
