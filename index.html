@@ -38,7 +38,72 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit-icons.min.js"></script>
 
+    <style type="text/css">
+        @font-face {
+            font-family: "Chase Zen Blight";
+            src: url('font/English/CHASEZENBLIGHT.ttf');
+        }
+        @font-face {
+            font-family: "DIN Condensed Bold";
+            src: url('font/English/DIN Condensed Bold.ttf');
+        }
+        @font-face {
+            font-family: "DragonForcE";
+            src: url('font/English/DragonForcE.ttf');
+        }
+        @font-face {
+            font-family: "Kremlin";
+            src: url('font/English/Kremlin.ttf');
+        }
+    </style>
     <style>
+        .intro{
+            position: fixed;
+            z-index: 3;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #161616;
+            transition: 1s;
+        }
+        .logo-header {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #FFFFFF;
+            white-space: nowrap;
+        }
+        .logo{
+            position: relative;
+            display: inline-block;
+            bottom: -20px;
+            opacity: 0;
+        }
+        .logo.active{
+            bottom: 0;
+            opacity: 1;
+            transition: ease 0.5s;
+        }
+        .logo.fade{
+            bottom: 150px;
+            opacity: 0;
+            transition: ease 0.75s;
+        }
+        .logo-character{
+            font-size: 1rem;
+            font-family: "Chase Zen Blight";
+        }
+        .logo-character.readable-font{
+            font-size: 2.25rem;
+            font-family: DragonForcE;
+        }
+
+        #id_top {
+            z-index: 2;
+        }
+
         .section-header {
             color: #EEEEEE;
         }
@@ -65,6 +130,16 @@
     </style>
 </head>
 <body style="margin: 0; background-color: black;">
+
+<div class="intro">
+    <h1 class="logo-header">
+        <span class="logo"><span class="logo-character">I</span><span class="logo-character">n</span><span class="logo-character">t</span><span class="logo-character">e</span><span class="logo-character">g</span><span class="logo-character">r</span><span class="logo-character">i</span><span class="logo-character">t</span><span class="logo-character">y</span><span class="logo-character">a</span><span class="logo-character">n</span><span class="logo-character">d</span></span>
+        <span class="logo"><span class="logo-character">D</span><span class="logo-character">e</span><span class="logo-character">p</span><span class="logo-character">r</span><span class="logo-character">a</span><span class="logo-character">v</span><span class="logo-character">a</span><span class="logo-character">t</span><span class="logo-character">i</span><span class="logo-character">o</span><span class="logo-character">n</span></span>
+        <span class="logo"><span class="logo-character">E</span><span class="logo-character">n</span><span class="logo-character">i</span><span class="logo-character">g</span><span class="logo-character">m</span><span class="logo-character">a</span><span class="logo-character">t</span><span class="logo-character">i</span><span class="logo-character">c</span></span>
+        <span class="logo"><span class="logo-character">A</span><span class="logo-character">s</span><span class="logo-character">s</span><span class="logo-character">o</span><span class="logo-character">c</span><span class="logo-character">i</span><span class="logo-character">a</span><span class="logo-character">t</span><span class="logo-character">i</span><span class="logo-character">o</span><span class="logo-character">n</span></span>
+    </h1>
+</div>
+
 <div class="uk-margin-remove uk-grid-collapse uk-dark" uk-grid>
     <audio id="id_loop_bgm" loop>
         <source src="audio/bgm.mp3" type="audio/mpeg">
@@ -223,12 +298,12 @@
         }, false);
 
         function disabledEvent(e) {
-            if (e.stopPropagation) {
-                e.stopPropagation();
-            } else if (window.event) {
-                window.event.cancelBubble = true;
-            }
-            e.preventDefault();
+            // if (e.stopPropagation) {
+            //     e.stopPropagation();
+            // } else if (window.event) {
+            //     window.event.cancelBubble = true;
+            // }
+            // e.preventDefault();
             console.log("sanity", sanity);
             if (sanity_check[sanity_max - sanity].action === "sneak_open_new_tab") {
                 window.open(
@@ -272,6 +347,47 @@
         );
     }
 
+    let intro = document.querySelector(".intro");
+    let logo = document.querySelector(".logo-header");
+    let logoSpan = document.querySelectorAll(".logo");
+    let logoCharacterSpan = document.querySelectorAll(".logo-character");
+
+    window.addEventListener("DOMContentLoaded", ()=>{
+        setTimeout(()=>{
+            logoSpan.forEach((span, idx)=>{
+                setTimeout(()=>{
+                    span.classList.add("active");
+                    // span.querySelectorAll(".logo-character").forEach((char, char_idx)=>{
+                    //     setTimeout(()=>{
+                    //         char.classList.add("readable-font");
+                    //     }, (char_idx + 1) * 50)
+                    // });
+                }, (idx + 1) * 400)
+            });
+            setTimeout(()=>{
+                logoSpan.forEach((span, i)=>{
+                    span.querySelectorAll(".logo-character").forEach((char, idx)=>{
+                        setTimeout(()=>{
+                            char.classList.add("readable-font");
+                        }, (idx + 1) * 100)
+                    });
+                })
+            }, 2000)
+
+            setTimeout(()=>{
+                logoSpan.forEach((span, idx)=>{
+                    setTimeout(()=>{
+                        span.classList.remove("active");
+                        span.classList.add("fade");
+                    }, (idx + 1) * 50)
+                })
+            }, 3800)
+
+            setTimeout(()=>{
+                intro.style.top = '-100vh';
+            }, 4500)
+        })
+    })
 </script>
 </body>
 </html>
