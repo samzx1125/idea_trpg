@@ -42,6 +42,26 @@
         .section-header {
             color: #EEEEEE;
         }
+
+        .text-white {
+            color: #EEEEEE;
+        }
+
+        .text-green {
+            color: darkgreen;
+        }
+
+        .text-red {
+            color: red;
+        }
+
+        .text-hover-red {
+            transition: color 1s ease; /* transition property for smooth animation */
+        }
+
+        .text-hover-red:hover {
+            color: red;
+        }
     </style>
 </head>
 <body style="margin: 0; background-color: black;">
@@ -65,7 +85,8 @@
 
     <!--Company Description-->
     <div class="uk-margin-small uk-width-1-1">
-        <h1 class="uk-text-center section-header">有關我們</h1>
+        <h1 class="uk-text-center section-header">有關我們
+        </h1>
     </div>
 
     <div class="uk-width-1-2@m uk-width-1-1@s">
@@ -85,7 +106,8 @@
         <h1 class="uk-text-center section-header">劇本存放區</h1>
     </div>
 
-    <div class="uk-margin-small uk-width-1-1 uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
+    <div class="uk-margin-small uk-width-1-1 uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
+         uk-slider="center: true">
         <div class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-2@s" id="id_script_lightbox" uk-grid
              uk-lightbox="animation: slide"></div>
 
@@ -110,13 +132,14 @@
         </div>
         <div class="uk-width-1-2@m uk-width-1-1@s uk-height-large@s uk-inline uk-section uk-padding-remove-top"
              style="min-height: 360px;">
-            <div class="uk-position-bottom uk-margin-medium-left uk-margin-medium-bottom uk-container"
-                 style="height: 360px; color: #EEEEEE">
+            <div class="uk-position-bottom uk-margin-medium-left uk-margin-medium-bottom uk-container text-white"
+                 style="height: 360px">
                 <p class="uk-text-default">
-                    你有<span style="color: red">興趣</span>嗎？以下是報名方法
+                    你有<span class="text-red">興趣</span>嗎？以下是報名方法
                 </p>
                 <p class="uk-text-default" style="white-space: pre-line;">
-                    1.上<a style="color: red" href="https://www.instagram.com/idea_trpg?igsh=MWMwZHNmcjd3cmZ3MQ==" target="_blank">我地Instagram</a>睇下最新既News
+                    1.上<a class="text-green text-hover-red"
+                           href="https://www.instagram.com/idea_trpg?igsh=MWMwZHNmcjd3cmZ3MQ==" target="_blank"><u>我地Instagram</u></a>睇下最新既News
                     2.係上面睇定你想跑咩劇本
                     3.約齊你既戰友，或者自私報名
 
@@ -150,66 +173,77 @@
         {"message": "你不應該住這邊望的", "action": null, "value": null},
         {"message": "「當你凝視深淵", "action": null, "value": null},
         {"message": "深淵亦會凝視你」", "action": null, "value": null},
-        {"message": "--費德里希·尼采", "action": "sneak_open_new_tab", "value": "https://en.wikipedia.org/wiki/Friedrich_Nietzsche"},
+        {
+            "message": "--費德里希·尼采",
+            "action": "sneak_open_new_tab",
+            "value": "https://en.wikipedia.org/wiki/Friedrich_Nietzsche"
+        },
         {"message": "現在還來得及回頭的", "action": null, "value": null},
         {"message": "回去你來的地方，不要回頭", "action": null, "value": null},
         {"message": "不然你會被...", "action": null, "value": null},
         {"message": "...", "action": null, "value": null},
         {"message": "..", "action": null, "value": null},
         {"message": ".", "action": null, "value": null},
-        {"message": "...被Rick Roll的", "action": "sneak_open_new_tab", "value": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=v9l9S1MbL6mg05De"},
+        {
+            "message": "...被Rick Roll的",
+            "action": "sneak_open_new_tab",
+            "value": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=v9l9S1MbL6mg05De"
+        },
     ]
     let sanity_max = sanity_check.length - 1;
     let sanity = sanity_check.length - 1;
 
     // Prevent inspection of code in browser
     window.onload = function () {
-       document.addEventListener("contextmenu", function (e) {
-           e.preventDefault();
-       }, false);
-       document.addEventListener("keydown", function (e) {
-           //document.onkeydown = function(e) {
-           // "I" key
-           if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
-               disabledEvent(e);
-           }
-           // "J" key
-           if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
-               disabledEvent(e);
-           }
-           // "S" key + macOS
-           if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
-               disabledEvent(e);
-           }
-           // "U" key
-           if (e.ctrlKey && e.keyCode == 85) {
-               disabledEvent(e);
-           }
-           // "F12" key
-           if (event.keyCode == 123) {
-               disabledEvent(e);
-           }
-       }, false);
-       function disabledEvent(e) {
-           if (e.stopPropagation) {
-               e.stopPropagation();
-           } else if (window.event) {
-               window.event.cancelBubble = true;
-           }
-           e.preventDefault();
-           console.log("sanity", sanity);
-           if (sanity_check[sanity_max - sanity].action === "sneak_open_new_tab"){
-               window.open(
-                   sanity_check[sanity_max - sanity].value,
-                   '_blank',
-                   'width=611,height=611,resizable=no'
-               );
-           }
-           alert(sanity_check[sanity_max - sanity].message);
-           if (sanity > 0) {sanity -= 1;}
-           return false;
-       }
-   }
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        }, false);
+        document.addEventListener("keydown", function (e) {
+            //document.onkeydown = function(e) {
+            // "I" key
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                disabledEvent(e);
+            }
+            // "J" key
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+                disabledEvent(e);
+            }
+            // "S" key + macOS
+            if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+                disabledEvent(e);
+            }
+            // "U" key
+            if (e.ctrlKey && e.keyCode == 85) {
+                disabledEvent(e);
+            }
+            // "F12" key
+            if (event.keyCode == 123) {
+                disabledEvent(e);
+            }
+        }, false);
+
+        function disabledEvent(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            } else if (window.event) {
+                window.event.cancelBubble = true;
+            }
+            e.preventDefault();
+            console.log("sanity", sanity);
+            if (sanity_check[sanity_max - sanity].action === "sneak_open_new_tab") {
+                window.open(
+                    sanity_check[sanity_max - sanity].value,
+                    '_blank',
+                    'width=611,height=611,resizable=no'
+                );
+            }
+            alert(sanity_check[sanity_max - sanity].message);
+            if (sanity > 0) {
+                sanity -= 1;
+            }
+            return false;
+        }
+    }
 
 
     // Audio player for future
