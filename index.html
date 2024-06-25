@@ -140,6 +140,10 @@
         .text-DragonForcE{
             font-family: DragonForcE;
         }
+
+        .uk-lightbox-button, .uk-slidenav{
+            color: red !important;
+        }
     </style>
 </head>
 <body style="margin: 0; background-color: black;">
@@ -200,9 +204,9 @@
              uk-lightbox="animation: slide"></div>
 
         <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-slidenav-large" href uk-slidenav-previous
-           uk-slider-item="previous" style="color: red"></a>
+           uk-slider-item="previous"></a>
         <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-slidenav-large" href uk-slidenav-next
-           uk-slider-item="next" style="color: red"></a>
+           uk-slider-item="next"></a>
     </div>
 
     <div class="uk-width-1-1 uk-form-controls">
@@ -311,12 +315,12 @@
         }, false);
 
         function disabledEvent(e) {
-            if (e.stopPropagation) {
-                e.stopPropagation();
-            } else if (window.event) {
-                window.event.cancelBubble = true;
-            }
-            e.preventDefault();
+            // if (e.stopPropagation) {
+            //     e.stopPropagation();
+            // } else if (window.event) {
+            //     window.event.cancelBubble = true;
+            // }
+            // e.preventDefault();
             console.log("sanity", sanity);
             if (sanity_check[sanity_max - sanity].action === "sneak_open_new_tab") {
                 window.open(
@@ -347,8 +351,8 @@
 
     const posterArray = [
         {"path": "Poster_GD_O.png", "name": "鬼門開"},
-        {"path": "Poster_AA_AA.jpg", "name": "呀呃啊啊"},
-        {"path": "Poster_UM_IB_TI_BS.jpg", "name": "［暫定］離海洋最遙遠的地方"},
+        {"path": "Poster_AA_AA.png", "name": "呀呃啊啊"},
+        {"path": "Poster_UM_IB_TI_BS.png", "name": "［暫定］離海洋最遙遠的地方"},
     ];
     for (const posterElement of posterArray) {
         posterShowCaseLightBox.append(
@@ -360,6 +364,7 @@
         );
     }
 
+    // intro animation
     let intro = document.querySelector(".intro");
     let logoSpan = document.querySelectorAll(".logo");
 
