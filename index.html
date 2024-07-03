@@ -1,4 +1,4 @@
-<html lang="en-HK" style="background-color: black;">
+<html lang="en-HK">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -59,8 +59,15 @@
             font-family: "Baoli";
             src: url('font/Chinese/Baoli.ttc');
         }
+        :root{
+            --background-color: black;
+            --intro-background-color: #161616
+        }
     </style>
     <style>
+        html {
+            background-color:var(--background-color);
+        }
         .intro{
             position: fixed;
             z-index: 3;
@@ -68,8 +75,12 @@
             top: 0;
             width: 100%;
             height: 100vh;
-            background-color: #161616;
-            transition: 1s;
+            background-color: var(--intro-background-color);
+            transition: 0.8s;
+        }
+        .intro .text-hidden{
+            color: var(--intro-background-color);
+            transition: ease-in-out 0.75s;
         }
         .logo-header {
             position: absolute;
@@ -104,6 +115,17 @@
             font-size: 2.25rem;
             font-family: DragonForcE;
         }
+        .transition-linear {
+            transition: linear 1s;
+        }
+        .transition-ease-in-out {
+            transition: ease-in-out 0.75s;
+        }
+        .text-hidden-pt2 {
+            font-size: 0 !important;
+            transition: ease 0.5s;
+        }
+
 
         #id_top {
             z-index: 2;
@@ -125,6 +147,14 @@
             color: red;
         }
 
+        .text-black {
+            color: black;
+        }
+
+        .text-hidden {
+            color: var(--background-color);
+        }
+
         .text-hover-red {
             transition: color 1s ease; /* transition property for smooth animation */
         }
@@ -133,11 +163,11 @@
             color: red;
         }
 
-        .text-Baoli {
+        .font-Baoli {
             font-family: DragonForcE, Baoli;
         }
 
-        .text-DragonForcE{
+        .font-DragonForcE{
             font-family: DragonForcE;
         }
 
@@ -150,10 +180,10 @@
 
 <div class="intro">
     <h1 class="logo-header">
-        <span class="logo">&nbsp;<span class="logo-character">I</span><span class="logo-character">n</span><span class="logo-character">t</span><span class="logo-character">e</span><span class="logo-character">g</span><span class="logo-character">r</span><span class="logo-character">i</span><span class="logo-character">t</span><span class="logo-character">y</span><span class="logo-character"> a</span><span class="logo-character">n</span><span class="logo-character">d</span></span>
-        <br><span class="logo">&nbsp;<span class="logo-character">D</span><span class="logo-character">e</span><span class="logo-character">p</span><span class="logo-character">r</span><span class="logo-character">a</span><span class="logo-character">v</span><span class="logo-character">a</span><span class="logo-character">t</span><span class="logo-character">i</span><span class="logo-character">o</span><span class="logo-character">n</span></span>
-        <br><span class="logo">&nbsp;<span class="logo-character">E</span><span class="logo-character">n</span><span class="logo-character">i</span><span class="logo-character">g</span><span class="logo-character">m</span><span class="logo-character">a</span><span class="logo-character">t</span><span class="logo-character">i</span><span class="logo-character">c</span></span>
-        <br><span class="logo">&nbsp;<span class="logo-character">A</span><span class="logo-character">s</span><span class="logo-character">s</span><span class="logo-character">o</span><span class="logo-character">c</span><span class="logo-character">i</span><span class="logo-character">a</span><span class="logo-character">t</span><span class="logo-character">i</span><span class="logo-character">o</span><span class="logo-character">n</span></span>
+        <span class="logo">&nbsp;<span id="intro-pt1-letter-1" class="logo-character company-name-first-letter">I</span><span class="logo-character">n</span><span class="logo-character">t</span><span class="logo-character">e</span><span class="logo-character">g</span><span class="logo-character">r</span><span class="logo-character">i</span><span class="logo-character">t</span><span class="logo-character">y</span><span class="logo-character"> a</span><span class="logo-character">n</span><span class="logo-character">d</span></span>
+        <br><span class="logo">&nbsp;<span id="intro-pt1-letter-2" class="logo-character company-name-first-letter">D</span><span class="logo-character">e</span><span class="logo-character">p</span><span class="logo-character">r</span><span class="logo-character">a</span><span class="logo-character">v</span><span class="logo-character">a</span><span class="logo-character">t</span><span class="logo-character">i</span><span class="logo-character">o</span><span class="logo-character">n</span></span>
+        <br><span class="logo">&nbsp;<span id="intro-pt1-letter-3" class="logo-character company-name-first-letter">E</span><span class="logo-character">n</span><span class="logo-character">i</span><span class="logo-character">g</span><span class="logo-character">m</span><span class="logo-character">a</span><span class="logo-character">t</span><span class="logo-character">i</span><span class="logo-character">c</span></span>
+        <br><span class="logo">&nbsp;<span id="intro-pt1-letter-4" class="logo-character company-name-first-letter">A</span><span class="logo-character">s</span><span class="logo-character">s</span><span class="logo-character">o</span><span class="logo-character">c</span><span class="logo-character">i</span><span class="logo-character">a</span><span class="logo-character">t</span><span class="logo-character">i</span><span class="logo-character">o</span><span class="logo-character">n</span></span>
     </h1>
 </div>
 
@@ -169,7 +199,7 @@
             <div class="uk-width-1-1 uk-padding-remove uk-align-center uk-flex uk-flex-center"
                  style="width: 100%; background-color: black; border-bottom: 1px solid darkgreen;" uk-sticky="">
                 <a href="#id_top" uk-scroll>
-                    <img src="img/Logo_Ig.png" style="height: 100px;">
+                    <img src="img/logo/IDEA_Logo_Design_y.png" style="height: 100px;">
                 </a>
             </div>
         </div>
@@ -177,15 +207,15 @@
 
     <!--Company Description-->
     <div class="uk-margin-small uk-width-1-1">
-        <h1 class="uk-text-center section-header text-Baoli">有關我們
+        <h1 class="uk-text-center section-header font-Baoli">有關我們
         </h1>
     </div>
 
     <div class="uk-width-1-2@m uk-width-1-1@s">
-        <img src="img/Description_01.png">
+        <img src="img/description/Description_01.png">
     </div>
     <div class="uk-width-1-2@m uk-width-1-1@s">
-        <img src="img/Description_02.png">
+        <img src="img/description/Description_02.png">
     </div>
 
     <div class="uk-width-1-1 uk-form-controls">
@@ -195,7 +225,7 @@
 
     <!--Section Script Poster-->
     <div class="uk-margin-small uk-width-1-1">
-        <h1 class="uk-text-center section-header text-Baoli">劇本存放區</h1>
+        <h1 class="uk-text-center section-header font-Baoli">劇本存放區<br><s class="text-hidden">儀式紀錄</s></h1>
     </div>
 
     <div class="uk-margin-small uk-width-1-1 uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
@@ -216,22 +246,22 @@
 
     <!--Section Cost and Register-->
     <div class="uk-margin-small uk-width-1-1">
-        <h1 class="uk-text-center section-header text-Baoli">報名需知</h1>
+        <h1 class="uk-text-center section-header font-Baoli">報名需知<br><s class="text-hidden">獻祭條件</s></h1>
     </div>
     <div class="uk-width-1-1 uk-padding-remove" style="height: max-content" uk-grid>
         <div class="uk-width-1-2@m uk-width-1-1@s">
-            <img src="img/Cost.png">
+            <img src="img/cost/Cost.png">
         </div>
         <div class="uk-width-1-2@m uk-width-1-1@s uk-height-large@s uk-inline uk-section uk-padding-remove-top"
              style="min-height: 360px;">
             <div class="uk-position-bottom uk-margin-medium-left uk-margin-medium-bottom uk-container text-white"
                  style="height: 360px">
-                <p class="uk-text-large text-Baoli">
+                <p class="uk-text-large font-Baoli">
                     你有<span class="text-red">興趣</span>嗎？以下是報名方法
                 </p>
-                <p class="uk-text-large text-Baoli" style="white-space: pre-line;">
+                <p class="uk-text-large font-Baoli" style="white-space: pre-line;">
                     1.上<a class="text-green text-hover-red"
-                           href="https://www.instagram.com/idea_trpg?igsh=MWMwZHNmcjd3cmZ3MQ==" target="_blank"><u>我地Instagram</u></a>睇下最新既News
+                           href="https://www.instagram.com/idea_trpg?igsh=MWMwZHNmcjd3cmZ3MQ==" target="_blank">我地Instagram</a>睇下最新既News
                     2.係上面睇定你想跑咩劇本
                     3.約齊你既戰友，或者自私報名
 
@@ -283,7 +313,8 @@
         },
     ]
     let sanity_max = sanity_check.length - 1;
-    let sanity = sanity_check.length - 1;
+    let sanity = sanity_max;
+    let debug = false;
 
     // Prevent inspection of code in browser
     window.onload = function () {
@@ -315,12 +346,13 @@
         }, false);
 
         function disabledEvent(e) {
-            // if (e.stopPropagation) {
-            //     e.stopPropagation();
-            // } else if (window.event) {
-            //     window.event.cancelBubble = true;
-            // }
-            // e.preventDefault();
+            if (debug) {return false;}
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            } else if (window.event) {
+                window.event.cancelBubble = true;
+            }
+            e.preventDefault();
             console.log("sanity", sanity);
             if (sanity_check[sanity_max - sanity].action === "sneak_open_new_tab") {
                 window.open(
@@ -346,7 +378,7 @@
     })
 
     // Define the directory path
-    const posterDirectory = 'img/script_poster/';
+    const posterDirectory = 'img/_script_poster/';
     const posterShowCaseLightBox = $('#id_script_lightbox');
 
     const posterArray = [
@@ -367,36 +399,71 @@
     // intro animation
     let intro = document.querySelector(".intro");
     let logoSpan = document.querySelectorAll(".logo");
+    let companyNameFirstLetter = document.querySelectorAll(".company-name-first-letter");
+    let timeoutOffSet = 0;
 
     window.addEventListener("DOMContentLoaded", ()=>{
         setTimeout(()=>{
             logoSpan.forEach((span, idx)=>{
                 setTimeout(()=>{
                     span.classList.add("active");
-                }, (idx + 1) * 400)
-            });
+                }, timeoutOffSet)
+                timeoutOffSet += 400;
+            });  //text appear
+            timeoutOffSet += 400;
+
             setTimeout(()=>{
                 logoSpan.forEach((span, i)=>{
                     span.querySelectorAll(".logo-character").forEach((char, idx)=>{
                         setTimeout(()=>{
                             char.classList.add("readable-font");
-                        }, (idx + 1) * 100)
+                        }, (idx + 1) * 75)
                     });
                 })
-            }, 2000)
+            }, timeoutOffSet)  //text change to readable font
+            timeoutOffSet += 1500;
 
             setTimeout(()=>{
-                logoSpan.forEach((span, idx)=>{
-                    setTimeout(()=>{
-                        span.classList.remove("active");
-                        span.classList.add("fade");
-                    }, (idx + 1) * 50)
+                logoSpan.forEach((span, i)=>{
+                    span.querySelectorAll(".logo-character:not(.company-name-first-letter)").forEach((char, idx)=>{
+                        setTimeout(()=>{
+                            char.classList.add("text-hidden");
+                        }, (idx + 1) * 75)
+                    });
                 })
-            }, 4200)
+            }, timeoutOffSet)  //hide other letter
+            timeoutOffSet += 1000;
+
+            setTimeout(()=>{
+                logoSpan.forEach((span, i)=>{
+                    span.querySelectorAll(".logo-character:not(.company-name-first-letter)").forEach((char, idx)=>{
+                        setTimeout(()=>{
+                            char.classList.add("text-hidden-pt2");
+                        }, (idx + 1) * 75)
+                    });
+                });
+                companyNameFirstLetter.forEach((span, i)=>{
+                    setTimeout(()=> {
+                        span.classList.add("transition-ease-in-out");
+                        span.classList.add("text-red");
+                    }, 150 + (i + 1) * 150);
+                });
+            }, timeoutOffSet)  //hide other letter
+            timeoutOffSet += 2000;
+
+            // timeoutOffSet += 1500;
+            // setTimeout(()=>{
+            //     logoSpan.forEach((span, idx)=>{
+            //         setTimeout(()=>{
+            //             span.classList.remove("active");
+            //             span.classList.add("fade");
+            //         }, (idx + 1) * 50)
+            //     })
+            // }, timeoutOffSet)
 
             setTimeout(()=>{
                 intro.style.top = '-100vh';
-            }, 4900)
+            }, timeoutOffSet)  //pull up intro
         })
     })
 </script>
