@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>IdeaTrpg</title>
     <meta name="author" content="IdeaTrpg">
-    <link rel="icon" type="image/x-icon" href="img/Logo_Ig.png">
+    <link rel="icon" type="image/x-icon" href="img/logo/Logo_Ig.png">
     <meta property="og:url" content="https://ideatrpg.com/">
     <meta property="og:site_name" content="IdeaTrpg">
     <meta property="og:title" content="IdeaTrpg">
@@ -63,10 +63,31 @@
             --background-color: black;
             --intro-background-color: #161616
         }
+        @keyframes breathing {
+          0% { transform: translate(0rem, 0rem) rotate(0deg); }
+
+          18% { transform: translate(0rem, 0.5rem) rotate(0deg); }
+          22% { transform: translate(0rem, 0.75rem) rotate(0deg); }
+          28% { transform: translate(0rem, 0.75rem) rotate(0deg); }
+          32% { transform: translate(0rem, 0.5rem) rotate(0deg); }
+
+          50% { transform: translate(0rem, 0rem) rotate(0deg); }
+
+          68% { transform: translate(0rem, -0.5rem) rotate(0deg); }
+          72% { transform: translate(0rem, -0.75rem) rotate(0deg); }
+          78% { transform: translate(0rem, -0.75rem) rotate(0deg); }
+          82% { transform: translate(0rem, -0.5rem) rotate(0deg); }
+
+          100% { transform: translate(0rem, 0rem) rotate(0deg); }
+        }
     </style>
     <style>
         html {
             background-color:var(--background-color);
+        }
+        .breathing-animation {
+            animation: breathing 6s;
+            animation-iteration-count: infinite;
         }
         .intro{
             position: fixed;
@@ -156,11 +177,15 @@
         }
 
         .text-hover-red {
-            transition: color 1s ease; /* transition property for smooth animation */
+            transition: color 0.6s ease-in-out; /* transition property for smooth animation */
         }
 
         .text-hover-red:hover {
             color: red;
+        }
+
+        .hover-pointer:hover {
+            cursor: pointer;
         }
 
         .font-Baoli {
@@ -176,7 +201,7 @@
         }
     </style>
 </head>
-<body style="margin: 0; background-color: black;">
+<body style="margin: 0; background-color: black;" id="id_body">
 
 <div class="intro">
     <h1 class="logo-header">
@@ -187,7 +212,7 @@
     </h1>
 </div>
 
-<div class="uk-margin-remove uk-grid-collapse uk-dark" uk-grid>
+<div id="id_content" class="uk-margin-remove uk-grid-collapse uk-dark" uk-grid>
     <audio id="id_loop_bgm" loop>
         <source src="audio/bgm.mp3" type="audio/mpeg">
         Mic test, One, Two
@@ -260,8 +285,8 @@
                     你有<span class="text-red">興趣</span>嗎？以下是報名方法
                 </p>
                 <p class="uk-text-large font-Baoli" style="white-space: pre-line;">
-                    1.上<a class="text-green text-hover-red"
-                           href="https://www.instagram.com/idea_trpg?igsh=MWMwZHNmcjd3cmZ3MQ==" target="_blank">我地Instagram</a>睇下最新既News
+                    1.上 <span class="text-green text-hover-red hover-pointer"
+                           onclick="window.open('https://www.instagram.com/idea_trpg?igsh=MWMwZHNmcjd3cmZ3MQ==', '_blank')">我地Instagram</span> 睇下最新既News
                     2.係上面睇定你想跑咩劇本
                     3.約齊你既戰友，或者自私報名
 
@@ -289,6 +314,7 @@
 </div>
 
 <script type="application/javascript">
+    // Set Message for Prevention of inspection
     let sanity_check = [
         {"message": "這是不是你該看的地方", "action": null, "value": null},
         {"message": "我在保護你的", "action": null, "value": null},
@@ -315,6 +341,7 @@
     let sanity_max = sanity_check.length - 1;
     let sanity = sanity_max;
     let debug = false;
+    let introFinish = false;
 
     // Prevent inspection of code in browser
     window.onload = function () {
@@ -369,6 +396,24 @@
         }
     }
 
+    // Stop Scrolling add breathing animation
+    // var scrollTimeout = null;
+    // let scrollTimeoutTime = 3140;
+    // function scrollStop(){
+    //     if (introFinish) {
+    //         document.getElementById("id_body").classList.add("breathing-animation");
+    //     }
+    // }
+    // $(window).scroll(function(){
+    //     if (scrollTimeout) clearTimeout(scrollTimeout);
+    //     scrollTimeout = setTimeout(function(){scrollStop()}, scrollTimeoutTime);
+    //     document.getElementById("id_body").classList.remove("breathing-animation");
+    // });
+
+    // random dice
+    function random_dice() {
+        return randomIndex = Math.ceil(Math.random() * 100);
+    }
 
     // Audio player for future
     var audioPlayer = document.getElementById("id_loop_bgm");
@@ -464,6 +509,11 @@
             setTimeout(()=>{
                 intro.style.top = '-100vh';
             }, timeoutOffSet)  //pull up intro
+            timeoutOffSet += 1000;
+
+            setTimeout(()=>{
+                introFinish = true;
+            })
         })
     })
 </script>
