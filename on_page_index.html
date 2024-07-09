@@ -38,148 +38,58 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit-icons.min.js"></script>
 
-    <style>
+    <style type="text/css">
         @font-face {
             font-family: "Chase Zen Blight";
             src: url('font/English/CHASEZENBLIGHT.ttf');
         }
-
         @font-face {
             font-family: "DIN Condensed Bold";
             src: url('font/English/DIN Condensed Bold.ttf');
         }
-
         @font-face {
             font-family: "DragonForcE";
             src: url('font/English/DragonForcE.ttf');
         }
-
         @font-face {
             font-family: "Kremlin";
             src: url('font/English/Kremlin.ttf');
         }
-
         @font-face {
             font-family: "Baoli";
             src: url('font/Chinese/Baoli.ttc');
         }
-
-        :root {
+        :root{
             --background-color: black;
             --intro-background-color: #161616
         }
-
         @keyframes breathing {
-            0% {
-                transform: translate(0rem, 0rem) rotate(0deg);
-            }
+          0% { transform: translate(0rem, 0rem) rotate(0deg); }
 
-            18% {
-                transform: translate(0rem, 0.5rem) rotate(0deg);
-            }
-            22% {
-                transform: translate(0rem, 0.75rem) rotate(0deg);
-            }
-            28% {
-                transform: translate(0rem, 0.75rem) rotate(0deg);
-            }
-            32% {
-                transform: translate(0rem, 0.5rem) rotate(0deg);
-            }
+          18% { transform: translate(0rem, 0.5rem) rotate(0deg); }
+          22% { transform: translate(0rem, 0.75rem) rotate(0deg); }
+          28% { transform: translate(0rem, 0.75rem) rotate(0deg); }
+          32% { transform: translate(0rem, 0.5rem) rotate(0deg); }
 
-            50% {
-                transform: translate(0rem, 0rem) rotate(0deg);
-            }
+          50% { transform: translate(0rem, 0rem) rotate(0deg); }
 
-            68% {
-                transform: translate(0rem, -0.5rem) rotate(0deg);
-            }
-            72% {
-                transform: translate(0rem, -0.75rem) rotate(0deg);
-            }
-            78% {
-                transform: translate(0rem, -0.75rem) rotate(0deg);
-            }
-            82% {
-                transform: translate(0rem, -0.5rem) rotate(0deg);
-            }
+          68% { transform: translate(0rem, -0.5rem) rotate(0deg); }
+          72% { transform: translate(0rem, -0.75rem) rotate(0deg); }
+          78% { transform: translate(0rem, -0.75rem) rotate(0deg); }
+          82% { transform: translate(0rem, -0.5rem) rotate(0deg); }
 
-            100% {
-                transform: translate(0rem, 0rem) rotate(0deg);
-            }
-        }
-    </style>
-    <style>
-        .sidebar {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .sidebar a{
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 1.75rem;
-            color: #818181;
-            display: block;
-            transition: 0.5s;
-        }
-
-        .sidebar a:not(.closebtn){
-            min-width: 8.75rem;
-            width: 8.75rem;
-        }
-
-        .sidebar a:hover {
-            color: #f1f1f1;
-        }
-
-        .sidebar .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        .openbtn {
-            background-color: var(--background-color);
-            position: absolute;
-            left: 3.5rem;
-            top: 3.5rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: white;
-            padding: 0.5rem 0.5rem;
-            border: none;
-            height: 3rem;
-            width: 3rem;
-            margin-top: -1.5rem;
-            margin-left: -1.5rem;
-        }
-
-        .openbtn:hover {
-            background-color: #444;
+          100% { transform: translate(0rem, 0rem) rotate(0deg); }
         }
     </style>
     <style>
         html {
-            background-color: var(--background-color);
+            background-color:var(--background-color);
         }
-
         .breathing-animation {
             animation: breathing 6s;
             animation-iteration-count: infinite;
         }
-
-        .intro {
+        .intro{
             position: fixed;
             z-index: 3;
             left: 0;
@@ -188,14 +98,11 @@
             height: 100vh;
             background-color: var(--intro-background-color);
             transition: 0.8s;
-            cursor: default;
         }
-
-        .intro .text-hidden {
+        .intro .text-hidden{
             color: var(--intro-background-color);
             transition: ease-in-out 0.75s;
         }
-
         .logo-header {
             position: absolute;
             top: 40%;
@@ -204,45 +111,37 @@
             color: #FFFFFF;
             white-space: nowrap;
         }
-
-        .logo {
+        .logo{
             position: relative;
             display: inline-block;
             bottom: -20px;
             opacity: 0;
             height: 2.25rem
         }
-
-        .logo.active {
+        .logo.active{
             bottom: 0;
             opacity: 1;
             transition: ease 0.5s;
         }
-
-        .logo.fade {
+        .logo.fade{
             bottom: 150px;
             opacity: 0;
             transition: ease 0.75s;
         }
-
-        .logo-character {
+        .logo-character{
             font-size: 1rem;
             font-family: "Chase Zen Blight";
         }
-
-        .logo-character.readable-font {
+        .logo-character.readable-font{
             font-size: 2.25rem;
             font-family: DragonForcE;
         }
-
         .transition-linear {
             transition: linear 1s;
         }
-
         .transition-ease-in-out {
             transition: ease-in-out 0.75s;
         }
-
         .text-hidden-pt2 {
             font-size: 0 !important;
             transition: ease 0.5s;
@@ -293,16 +192,12 @@
             font-family: DragonForcE, Baoli;
         }
 
-        .font-DragonForcE {
+        .font-DragonForcE{
             font-family: DragonForcE;
         }
 
-        .uk-lightbox-button, .uk-slidenav {
+        .uk-lightbox-button, .uk-slidenav{
             color: red !important;
-        }
-
-        #id_content {
-            transition: margin-left .5s;
         }
     </style>
 </head>
@@ -310,63 +205,111 @@
 
 <div class="intro">
     <h1 class="logo-header">
-        <span class="logo">&nbsp;<span id="intro-pt1-letter-1" class="logo-character company-name-first-letter">I</span><span
-                class="logo-character">n</span><span class="logo-character">t</span><span
-                class="logo-character">e</span><span class="logo-character">g</span><span
-                class="logo-character">r</span><span class="logo-character">i</span><span
-                class="logo-character">t</span><span class="logo-character">y</span><span
-                class="logo-character"> a</span><span class="logo-character">n</span><span
-                class="logo-character">d</span></span>
-        <br><span class="logo">&nbsp;<span id="intro-pt1-letter-2"
-                                           class="logo-character company-name-first-letter">D</span><span
-            class="logo-character">e</span><span class="logo-character">p</span><span
-            class="logo-character">r</span><span class="logo-character">a</span><span
-            class="logo-character">v</span><span class="logo-character">a</span><span
-            class="logo-character">t</span><span class="logo-character">i</span><span
-            class="logo-character">o</span><span class="logo-character">n</span></span>
-        <br><span class="logo">&nbsp;<span id="intro-pt1-letter-3"
-                                           class="logo-character company-name-first-letter">E</span><span
-            class="logo-character">n</span><span class="logo-character">i</span><span
-            class="logo-character">g</span><span class="logo-character">m</span><span
-            class="logo-character">a</span><span class="logo-character">t</span><span
-            class="logo-character">i</span><span class="logo-character">c</span></span>
-        <br><span class="logo">&nbsp;<span id="intro-pt1-letter-4"
-                                           class="logo-character company-name-first-letter">A</span><span
-            class="logo-character">s</span><span class="logo-character">s</span><span
-            class="logo-character">o</span><span class="logo-character">c</span><span
-            class="logo-character">i</span><span class="logo-character">a</span><span
-            class="logo-character">t</span><span class="logo-character">i</span><span
-            class="logo-character">o</span><span class="logo-character">n</span></span>
+        <span class="logo">&nbsp;<span id="intro-pt1-letter-1" class="logo-character company-name-first-letter">I</span><span class="logo-character">n</span><span class="logo-character">t</span><span class="logo-character">e</span><span class="logo-character">g</span><span class="logo-character">r</span><span class="logo-character">i</span><span class="logo-character">t</span><span class="logo-character">y</span><span class="logo-character"> a</span><span class="logo-character">n</span><span class="logo-character">d</span></span>
+        <br><span class="logo">&nbsp;<span id="intro-pt1-letter-2" class="logo-character company-name-first-letter">D</span><span class="logo-character">e</span><span class="logo-character">p</span><span class="logo-character">r</span><span class="logo-character">a</span><span class="logo-character">v</span><span class="logo-character">a</span><span class="logo-character">t</span><span class="logo-character">i</span><span class="logo-character">o</span><span class="logo-character">n</span></span>
+        <br><span class="logo">&nbsp;<span id="intro-pt1-letter-3" class="logo-character company-name-first-letter">E</span><span class="logo-character">n</span><span class="logo-character">i</span><span class="logo-character">g</span><span class="logo-character">m</span><span class="logo-character">a</span><span class="logo-character">t</span><span class="logo-character">i</span><span class="logo-character">c</span></span>
+        <br><span class="logo">&nbsp;<span id="intro-pt1-letter-4" class="logo-character company-name-first-letter">A</span><span class="logo-character">s</span><span class="logo-character">s</span><span class="logo-character">o</span><span class="logo-character">c</span><span class="logo-character">i</span><span class="logo-character">a</span><span class="logo-character">t</span><span class="logo-character">i</span><span class="logo-character">o</span><span class="logo-character">n</span></span>
     </h1>
 </div>
 
-<div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
-    <a onclick="change_frame_content('pages/introduction.html')">關於我們</a>
-    <a onclick="change_frame_content('pages/script_and_poster.html')">劇本存放區</a>
-    <a onclick="change_frame_content('pages/enrolment_method.html')">報名須知</a>
-</div>
-
-<div id="id_content" class="uk-margin-remove uk-dark uk-height-1-1" uk-grid>
+<div id="id_content" class="uk-margin-remove uk-grid-collapse uk-dark" uk-grid>
     <audio id="id_loop_bgm" loop>
         <source src="audio/bgm.mp3" type="audio/mpeg">
         Mic test, One, Two
     </audio>
 
     <!--Section Floating Logo-->
-    <button class="openbtn uk-float-left" onclick="toggleNav()">☰</button>
-    <div class="uk-width-1-1 uk-margin-remove uk-padding-remove uk-align-center uk-flex uk-flex-center"
-         style="width: 100vw; height: fit-content; background-color: black; border-bottom: 1px solid darkgreen;">
-        <a onclick="document.getElementById('main_frame').contentWindow.scrollTo({top: 0, left: 0, behavior: 'smooth'});">
-            <img src="img/logo/IDEA_Logo_Design_y.png" style="height: 7rem;">
-        </a>
+    <div class="uk-width-1-1 uk-margin-remove" id="id_top" style="width: 100%;" uk-grid>
+        <div class="uk-width-1-1 uk-padding-remove" style="width: 100%;">
+            <div class="uk-width-1-1 uk-padding-remove uk-align-center uk-flex uk-flex-center"
+                 style="width: 100%; background-color: black; border-bottom: 1px solid darkgreen;" uk-sticky="">
+                <a href="#id_top" uk-scroll>
+                    <img src="img/logo/IDEA_Logo_Design_y.png" style="height: 100px;">
+                </a>
+            </div>
+        </div>
     </div>
 
-    <!--Main Frame-->
-    <div class="uk-width-1-1 uk-margin-remove uk-padding-remove"
-         id="id_frame_container"
-         style="overflow-y: scroll; height: calc(100vh - 7rem - 1px)">
-        <iframe id="main_frame" style="height: 100%; width: 100%" src="pages/introduction.html"></iframe>
+    <!--Company Description-->
+    <div class="uk-margin-small uk-width-1-1">
+        <h1 class="uk-text-center section-header font-Baoli">有關我們
+        </h1>
+    </div>
+
+    <div class="uk-width-1-2@m uk-width-1-1@s">
+        <img src="img/description/Description_01.png">
+    </div>
+    <div class="uk-width-1-2@m uk-width-1-1@s">
+        <img src="img/description/Description_02.png">
+    </div>
+
+    <div class="uk-width-1-1 uk-form-controls">
+        <b class=""></b>
+        <hr class="uk-margin-remove" style="border-top: 1px solid grey;">
+    </div>
+
+    <!--Section Script Poster-->
+    <div class="uk-margin-small uk-width-1-1">
+        <h1 class="uk-text-center section-header font-Baoli">劇本存放區<br><s class="text-hidden">儀式紀錄</s></h1>
+    </div>
+
+    <div class="uk-margin-small uk-width-1-1 uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
+         uk-slider="center: true">
+        <div class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-2@s" id="id_script_lightbox" uk-grid
+             uk-lightbox="animation: slide"></div>
+
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-slidenav-large" href uk-slidenav-previous
+           uk-slider-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-slidenav-large" href uk-slidenav-next
+           uk-slider-item="next"></a>
+    </div>
+
+    <div class="uk-width-1-1 uk-form-controls">
+        <b class=""></b>
+        <hr class="uk-margin-remove" style="border-top: 1px solid grey;">
+    </div>
+
+    <!--Section Cost and Register-->
+    <div class="uk-margin-small uk-width-1-1">
+        <h1 class="uk-text-center section-header font-Baoli">報名需知<br><s class="text-hidden">獻祭條件</s></h1>
+    </div>
+    <div class="uk-width-1-1 uk-padding-remove" style="height: max-content" uk-grid>
+        <div class="uk-width-1-2@m uk-width-1-1@s">
+            <img src="img/cost/Cost.png">
+        </div>
+        <div class="uk-width-1-2@m uk-width-1-1@s uk-height-large@s uk-inline uk-section uk-padding-remove-top"
+             style="min-height: 360px;">
+            <div class="uk-position-bottom uk-margin-medium-left uk-margin-medium-bottom uk-container text-white"
+                 style="height: 360px">
+                <p class="uk-text-large font-Baoli">
+                    你有<span class="text-red">興趣</span>嗎？以下是報名方法
+                </p>
+                <p class="uk-text-large font-Baoli" style="white-space: pre-line;">
+                    1.上 <span class="text-green text-hover-red hover-pointer"
+                           onclick="window.open('https://www.instagram.com/idea_trpg?igsh=MWMwZHNmcjd3cmZ3MQ==', '_blank')">我地Instagram</span> 睇下最新既News
+                    2.係上面睇定你想跑咩劇本
+                    3.約齊你既戰友，或者自私報名
+
+                </p>
+                <!--<p class="uk-text-large" style="white-space: pre-line;">-->
+                <!--    1.上Instagram 睇下我地既News-->
+                <!--    2.係上面睇定你想跑咩劇本-->
+                <!--    3.約齊你既戰友，或者自私報名-->
+                <!--    4.到下面Google form 填上你既資料-->
+                <!--    5.提交完就可以等我地通知啦-->
+                <!--    6.我地安排好時間會同你確認返booking-->
+                <!--    7.當日帶齊人同供品上黎我地度享受！-->
+                <!--</p>-->
+                <div>
+                    <a class="uk-button uk-button-secondary"
+                       href="https://wa.me/message/756VIDTKGKQ7L1"
+                       target="_blank">呢度報名</a>
+                    <!--<a class="uk-button uk-button-secondary"-->
+                    <!--   href="https://docs.google.com/forms/d/1G1xbvSOUoGbfT9O-HMBe7ub0wHYsqmExvvMppCxmWlg"-->
+                    <!--   target="_blank">呢度填表</a>-->
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -397,9 +340,8 @@
     ]
     let sanity_max = sanity_check.length - 1;
     let sanity = sanity_max;
-    let debug = true;
-    let introFinish = true;
-    let navStatus = false;
+    let debug = false;
+    let introFinish = false;
 
     // Prevent inspection of code in browser
     window.onload = function () {
@@ -431,9 +373,7 @@
         }, false);
 
         function disabledEvent(e) {
-            if (debug) {
-                return false;
-            }
+            if (debug) {return false;}
             if (e.stopPropagation) {
                 e.stopPropagation();
             } else if (window.event) {
@@ -508,20 +448,20 @@
     let companyNameFirstLetter = document.querySelectorAll(".company-name-first-letter");
     let timeoutOffSet = 0;
 
-    window.addEventListener("DOMContentLoaded", () => {
-        setTimeout(() => {
-            logoSpan.forEach((span, idx) => {
-                setTimeout(() => {
+    window.addEventListener("DOMContentLoaded", ()=>{
+        setTimeout(()=>{
+            logoSpan.forEach((span, idx)=>{
+                setTimeout(()=>{
                     span.classList.add("active");
                 }, timeoutOffSet)
                 timeoutOffSet += 400;
             });  //text appear
             timeoutOffSet += 400;
 
-            setTimeout(() => {
-                logoSpan.forEach((span, i) => {
-                    span.querySelectorAll(".logo-character").forEach((char, idx) => {
-                        setTimeout(() => {
+            setTimeout(()=>{
+                logoSpan.forEach((span, i)=>{
+                    span.querySelectorAll(".logo-character").forEach((char, idx)=>{
+                        setTimeout(()=>{
                             char.classList.add("readable-font");
                         }, (idx + 1) * 75)
                     });
@@ -529,10 +469,10 @@
             }, timeoutOffSet)  //text change to readable font
             timeoutOffSet += 1500;
 
-            setTimeout(() => {
-                logoSpan.forEach((span, i) => {
-                    span.querySelectorAll(".logo-character:not(.company-name-first-letter)").forEach((char, idx) => {
-                        setTimeout(() => {
+            setTimeout(()=>{
+                logoSpan.forEach((span, i)=>{
+                    span.querySelectorAll(".logo-character:not(.company-name-first-letter)").forEach((char, idx)=>{
+                        setTimeout(()=>{
                             char.classList.add("text-hidden");
                         }, (idx + 1) * 75)
                     });
@@ -540,16 +480,16 @@
             }, timeoutOffSet)  //hide other letter
             timeoutOffSet += 1000;
 
-            setTimeout(() => {
-                logoSpan.forEach((span, i) => {
-                    span.querySelectorAll(".logo-character:not(.company-name-first-letter)").forEach((char, idx) => {
-                        setTimeout(() => {
+            setTimeout(()=>{
+                logoSpan.forEach((span, i)=>{
+                    span.querySelectorAll(".logo-character:not(.company-name-first-letter)").forEach((char, idx)=>{
+                        setTimeout(()=>{
                             char.classList.add("text-hidden-pt2");
                         }, (idx + 1) * 75)
                     });
                 });
-                companyNameFirstLetter.forEach((span, i) => {
-                    setTimeout(() => {
+                companyNameFirstLetter.forEach((span, i)=>{
+                    setTimeout(()=> {
                         span.classList.add("transition-ease-in-out");
                         span.classList.add("text-red");
                     }, 150 + (i + 1) * 150);
@@ -567,36 +507,16 @@
             //     })
             // }, timeoutOffSet)
 
-            setTimeout(() => {
+            setTimeout(()=>{
                 intro.style.top = '-100vh';
             }, timeoutOffSet)  //pull up intro
             timeoutOffSet += 1000;
 
-            setTimeout(() => {
+            setTimeout(()=>{
                 introFinish = true;
             })
         })
     })
-
-    function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-        navStatus = false;
-    }
-
-    function toggleNav() {
-        if (navStatus) {
-            document.getElementById("mySidebar").style.width = "0";
-            navStatus = false;
-        } else {
-            document.getElementById("mySidebar").style.width = "250px";
-            navStatus = true;
-        }
-    }
-
-    function change_frame_content(path){
-        closeNav();
-        document.getElementById('main_frame').src = path;
-    }
 </script>
 </body>
 </html>
