@@ -123,7 +123,7 @@
             padding-top: 60px;
         }
 
-        .sidebar a{
+        .sidebar a {
             padding: 8px 8px 8px 32px;
             text-decoration: none;
             font-size: 1.75rem;
@@ -132,7 +132,7 @@
             transition: 0.5s;
         }
 
-        .sidebar a:not(.closebtn){
+        .sidebar a:not(.closebtn) {
             min-width: 10rem;
             width: 10rem;
         }
@@ -348,8 +348,8 @@
 </div>
 
 <div id="id_content" class="uk-margin-remove uk-dark uk-height-1-1" uk-grid>
-    <audio id="id_loop_bgm" loop>
-        <source src="audio/bgm.mp3" type="audio/mpeg">
+    <audio id="id_loop_bgm" muted="muted" loop>
+        <source src="audio/Suspense_Background.wav" type="audio/mpeg">
         Mic test, One, Two
     </audio>
 
@@ -357,7 +357,8 @@
     <button class="openbtn uk-float-left" onclick="toggleNav()">☰</button>
     <div class="uk-width-1-1 uk-margin-remove uk-padding-remove uk-align-center uk-flex uk-flex-center"
          style="width: 100vw; height: fit-content; background-color: black; border-bottom: 1px solid darkgreen;">
-        <a style="height: 7rem;" onclick="document.getElementById('main_frame').contentWindow.scrollTo({top: 0, left: 0, behavior: 'smooth'});">
+        <a style="height: 7rem;"
+           onclick="document.getElementById('main_frame').contentWindow.scrollTo({top: 0, left: 0, behavior: 'smooth'});">
             <img src="img/logo/IDEA_Logo_Design_y.png" style="height: 100%; object-fit: contain;">
         </a>
     </div>
@@ -371,7 +372,13 @@
 </div>
 
 <script type="application/javascript">
+    let isFirstClick = true;
+    let debug = true;
     // Set Message for Prevention of inspection
+    let sanity_max = sanity_check.length - 1;
+    let sanity = sanity_max;
+    let introFinish = true;
+    let navStatus = false;
     let sanity_check = [
         {"message": "這是不是你該看的地方", "action": null, "value": null},
         {"message": "我在保護你的", "action": null, "value": null},
@@ -395,11 +402,6 @@
             "value": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=v9l9S1MbL6mg05De"
         },
     ]
-    let sanity_max = sanity_check.length - 1;
-    let sanity = sanity_max;
-    let debug = true;
-    let introFinish = true;
-    let navStatus = false;
 
     // Prevent inspection of code in browser
     window.onload = function () {
@@ -456,30 +458,33 @@
         }
     }
 
-    // Stop Scrolling add breathing animation
-    // var scrollTimeout = null;
-    // let scrollTimeoutTime = 3140;
-    // function scrollStop(){
-    //     if (introFinish) {
-    //         document.getElementById("id_body").classList.add("breathing-animation");
-    //     }
-    // }
-    // $(window).scroll(function(){
-    //     if (scrollTimeout) clearTimeout(scrollTimeout);
-    //     scrollTimeout = setTimeout(function(){scrollStop()}, scrollTimeoutTime);
-    //     document.getElementById("id_body").classList.remove("breathing-animation");
-    // });
-
     // random dice
     function random_dice() {
         return randomIndex = Math.ceil(Math.random() * 100);
     }
 
     // Audio player for future
-    var audioPlayer = document.getElementById("id_loop_bgm");
-    window.addEventListener('load', function () {
-        audioPlayer.volume = 0.1;
-        audioPlayer.play();
+    let audioPlayer = document.getElementById("id_loop_bgm");
+    // Gradually increase the volume over 3 seconds
+    let initialVolume = 0;
+    let targetVolume = 0.3;
+    let fadeInDuration = 3000; // 3 seconds
+    let interval = 100; // 0.1 seconds
+    let steps = fadeInDuration / interval;
+    let volumeIncrement = (targetVolume - initialVolume) / steps;
+    audioPlayer.volume = 0;
+    document.addEventListener('click', function () {
+        if (isFirstClick) {
+            isFirstClick = false;
+            audioPlayer.play();
+            var fadeInInterval = setInterval(function () {
+                if (audioPlayer.volume < targetVolume) {
+                    audioPlayer.volume += volumeIncrement;
+                } else {
+                    clearInterval(fadeInInterval); // Stop the interval when volume reaches 1
+                }
+            }, interval);
+        }
     })
 
     // Define the directory path
@@ -593,7 +598,7 @@
         }
     }
 
-    function change_frame_content(path){
+    function change_frame_content(path) {
         closeNav();
         document.getElementById('main_frame').src = path;
     }
