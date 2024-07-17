@@ -66,7 +66,8 @@
 
         :root {
             --background-color: black;
-            --intro-background-color: #161616
+            --intro-background-color: #161616;
+            --header-height: 7rem;
         }
 
         @keyframes breathing {
@@ -167,6 +168,10 @@
 
         .openbtn:hover {
             background-color: #444;
+        }
+
+        #id_frame_container {
+            height: calc(100dvh - var(--header-height) - 1px)
         }
     </style>
     <style>
@@ -357,7 +362,7 @@
     <button class="openbtn uk-float-left" onclick="toggleNav()">☰</button>
     <div class="uk-width-1-1 uk-margin-remove uk-padding-remove uk-align-center uk-flex uk-flex-center"
          style="width: 100vw; height: fit-content; background-color: black; border-bottom: 1px solid darkgreen;">
-        <a style="height: 7rem;"
+        <a style="height: var(--header-height);"
            onclick="document.getElementById('main_frame').contentWindow.scrollTo({top: 0, left: 0, behavior: 'smooth'});">
             <img src="img/logo/IDEA_Logo_Design_y.png" style="height: 100%; object-fit: contain;">
         </a>
@@ -366,7 +371,7 @@
     <!--Main Frame-->
     <div class="uk-width-1-1 uk-margin-remove uk-padding-remove"
          id="id_frame_container"
-         style="overflow-y: scroll; height: calc(100vh - 7rem - 1px)">
+         style="overflow-y: scroll;">
         <iframe id="main_frame" style="height: 100%; width: 100%" src="pages/introduction.html"></iframe>
     </div>
 </div>
