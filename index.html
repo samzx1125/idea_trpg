@@ -375,10 +375,6 @@
     let isFirstClick = true;
     let debug = true;
     // Set Message for Prevention of inspection
-    let sanity_max = sanity_check.length - 1;
-    let sanity = sanity_max;
-    let introFinish = true;
-    let navStatus = false;
     let sanity_check = [
         {"message": "這是不是你該看的地方", "action": null, "value": null},
         {"message": "我在保護你的", "action": null, "value": null},
@@ -402,6 +398,10 @@
             "value": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=v9l9S1MbL6mg05De"
         },
     ]
+    let sanity_max = sanity_check.length - 1;
+    let sanity = sanity_max;
+    let introFinish = true;
+    let navStatus = false;
 
     // Prevent inspection of code in browser
     window.onload = function () {
