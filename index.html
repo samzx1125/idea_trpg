@@ -201,6 +201,19 @@
             transition: ease-in-out 0.75s;
         }
 
+        .loading {
+            position: fixed;
+            z-index: 3;
+            left: 0;
+            top: -100vh;
+            width: 100%;
+            height: 100vh;
+            background-color: #000000;
+            transition-timing-function: ease-out;
+            transition: 0.75s;
+            cursor: default;
+        }
+
         .logo-header {
             position: absolute;
             top: 40%;
@@ -344,17 +357,21 @@
             class="logo-character">o</span><span class="logo-character">n</span></span>
     </h1>
 </div>
+<div class="loading">
+    <img src="img/logo/Logo_Ig.png" alt="loading_logo" style="height: 100%; object-fit: contain;">
+</div>
 
 <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
-    <a onclick="change_frame_content('pages/introduction.html')">關於我們</a>
-    <a onclick="change_frame_content('pages/script_and_poster.html')">劇本存放區</a>
-    <a onclick="change_frame_content('pages/enrolment_method.html')">報名須知</a>
+    <!--<a onclick="change_frame_content('pages/introduction.html')">關於我們</a>-->
+    <!--<a onclick="change_frame_content('pages/script_and_poster.html')">劇本存放區</a>-->
+    <!--<a onclick="change_frame_content('pages/enrolment_method.html')">報名須知</a>-->
+    <!--<a onclick="change_frame_content('pages/character.html')">預設角色</a>-->
 </div>
 
 <div id="id_content" class="uk-margin-remove uk-dark uk-height-1-1" uk-grid>
     <audio id="id_loop_bgm" muted="muted" loop>
-        <source src="audio/Suspense_Background.wav" type="audio/mpeg">
+        <source src="audio/Suspense_Background.wav" type="audio/wav">
         Mic test, One, Two
     </audio>
 
@@ -364,7 +381,7 @@
          style="width: 100vw; height: fit-content; background-color: black; border-bottom: 1px solid darkgreen;">
         <a style="height: var(--header-height);"
            onclick="document.getElementById('main_frame').contentWindow.scrollTo({top: 0, left: 0, behavior: 'smooth'});">
-            <img src="img/logo/IDEA_Logo_Design_y.png" style="height: 100%; object-fit: contain;">
+            <img src="img/logo/IDEA_Logo_Design_y.png" alt="idea logo " style="height: 100%; object-fit: contain;">
         </a>
     </div>
 
@@ -377,8 +394,12 @@
 </div>
 
 <script type="application/javascript">
-    let isFirstClick = true;
-    let debug = true;
+    let debug = false;
+    let currentDomain = window.location.hostname;
+    console.log("currentDomain", currentDomain);
+    if (currentDomain === 'localhost') {
+        debug = true;
+    }
     // Set Message for Prevention of inspection
     let sanity_check = [
         {"message": "這是不是你該看的地方", "action": null, "value": null},
@@ -472,44 +493,59 @@
     let audioPlayer = document.getElementById("id_loop_bgm");
     // Gradually increase the volume over 3 seconds
     let initialVolume = 0;
-    let targetVolume = 0.3;
+    let targetVolume = 0.7;
     let fadeInDuration = 3000; // 3 seconds
     let interval = 100; // 0.1 seconds
     let steps = fadeInDuration / interval;
     let volumeIncrement = (targetVolume - initialVolume) / steps;
     audioPlayer.volume = 0;
-    document.addEventListener('click', function () {
-        if (isFirstClick) {
-            isFirstClick = false;
-            audioPlayer.play();
-            var fadeInInterval = setInterval(function () {
-                if (audioPlayer.volume < targetVolume) {
-                    audioPlayer.volume += volumeIncrement;
-                } else {
-                    clearInterval(fadeInInterval); // Stop the interval when volume reaches 1
-                }
-            }, interval);
-        }
-    })
+    document.body.onfocus = function () {
+        console.log("first click")
+        audioPlayer.muted = false;
+        audioPlayer.play();
+        var fadeInInterval = setInterval(function () {
+            if (audioPlayer.volume < targetVolume) {
+                console.log(audioPlayer.volume);
+                audioPlayer.volume += volumeIncrement;
+            } else {
+                clearInterval(fadeInInterval); // Stop the interval when volume reaches 1
+            }
+        }, interval);
+        document.body.onfocus = function() {};
+    }
 
-    // Define the directory path
-    const posterDirectory = 'img/script_poster/';
-    const posterShowCaseLightBox = $('#id_script_lightbox');
+    // add to side menu
+    const sideMenuElement = $('#mySidebar');
 
-    const posterArray = [
-        {"path": "Poster_GD_O.png", "name": "鬼門開"},
-        {"path": "Poster_AA_AA.png", "name": "呀呃啊啊"},
-        {"path": "Poster_UM_IB_TI_BS.png", "name": "［高難度］離海洋最遙遠的地方"},
-        {"path": "Poster_KS_AC_KR_MC.JPG", "name": "神奇寶寶的回家路"},
+    const menuArray = [
+        {"path": "pages/introduction.html", "name": "關於我們", "alt_name": "introduction", "hidden": false},
+        {"path": "pages/script_and_poster.html", "name": "劇本存放區", "alt_name": "poster", "hidden": false},
+        {"path": "pages/enrolment_method.html", "name": "報名須知", "alt_name": "enrolment", "hidden": false},
+        {"path": "pages/character.html", "name": "預設角色", "alt_name": "character", "hidden": false},
+        {"path": "pages/character_situation.html", "name": "角色現況", "alt_name": "character_situation", "hidden": true},
     ];
-    for (const posterElement of posterArray) {
-        posterShowCaseLightBox.append(
-            '<div>' +
-            '<a class="uk-inline" href="' + posterDirectory + posterElement.path + '" data-caption="' + posterElement.name + '" uk-lightbox="{group:\'script-poster\'}">' +
-            "<img src='" + posterDirectory + posterElement.path + "' width='1800' height='1200' alt='" + posterElement.name + "'>" +
-            "</a>" +
-            "</div>"
+    for (const menuArrayElement of menuArray) {
+        if (menuArrayElement.hidden) continue;
+        sideMenuElement.append(
+            "<a onclick=\"change_frame_content('" +
+            menuArrayElement.path +
+            "')\">" +
+            menuArrayElement.name +
+            "</a>"
         );
+    }
+    let urlParams = new URLSearchParams(window.location.search);
+    let check_if_toast = urlParams.has('page');
+    if (check_if_toast) {
+        let page_name = urlParams.get('page');
+        for (const menuArrayElement of menuArray) {
+            if (page_name === menuArrayElement.name || page_name === menuArrayElement.alt_name) {
+                document.getElementById('main_frame').src = menuArrayElement.path;
+                window.history.replaceState(null, '', window.location.pathname);
+                window.history.pushState(null, '', window.location.pathname);
+                break
+            }
+        }
     }
 
     // intro animation
@@ -519,6 +555,11 @@
     let timeoutOffSet = 0;
 
     window.addEventListener("DOMContentLoaded", () => {
+        blur();
+        if (debug === true) {
+            intro.style.top = '-100vh';
+            return false;
+        }
         setTimeout(() => {
             logoSpan.forEach((span, idx) => {
                 setTimeout(() => {
@@ -604,8 +645,20 @@
     }
 
     function change_frame_content(path) {
+        let loading_screen = document.querySelector(".loading");
         closeNav();
-        document.getElementById('main_frame').src = path;
+        setTimeout(() => {
+            loading_screen.style.top = '0';
+        }, 0)  //pull up intro
+
+        setTimeout(() => {
+            document.getElementById('main_frame').src = path;
+        }, 750)  //pull up intro
+
+        setTimeout(() => {
+            loading_screen.style.top = '-100vh';
+        }, 1500)  //pull up intro
+
     }
 </script>
 </body>
