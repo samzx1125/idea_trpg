@@ -327,35 +327,59 @@
 <body style="margin: 0; background-color: black;" id="id_body">
 
 <div class="intro">
-    <h1 class="logo-header">
-        <span class="logo">&nbsp;<span id="intro-pt1-letter-1" class="logo-character company-name-first-letter">I</span><span
-                class="logo-character">n</span><span class="logo-character">t</span><span
-                class="logo-character">e</span><span class="logo-character">g</span><span
-                class="logo-character">r</span><span class="logo-character">i</span><span
-                class="logo-character">t</span><span class="logo-character">y</span><span
-                class="logo-character"> a</span><span class="logo-character">n</span><span
-                class="logo-character">d</span></span>
-        <br><span class="logo">&nbsp;<span id="intro-pt1-letter-2"
-                                           class="logo-character company-name-first-letter">D</span><span
-            class="logo-character">e</span><span class="logo-character">p</span><span
-            class="logo-character">r</span><span class="logo-character">a</span><span
-            class="logo-character">v</span><span class="logo-character">a</span><span
-            class="logo-character">t</span><span class="logo-character">i</span><span
-            class="logo-character">o</span><span class="logo-character">n</span></span>
-        <br><span class="logo">&nbsp;<span id="intro-pt1-letter-3"
-                                           class="logo-character company-name-first-letter">E</span><span
-            class="logo-character">n</span><span class="logo-character">i</span><span
-            class="logo-character">g</span><span class="logo-character">m</span><span
-            class="logo-character">a</span><span class="logo-character">t</span><span
-            class="logo-character">i</span><span class="logo-character">c</span></span>
-        <br><span class="logo">&nbsp;<span id="intro-pt1-letter-4"
-                                           class="logo-character company-name-first-letter">A</span><span
-            class="logo-character">s</span><span class="logo-character">s</span><span
-            class="logo-character">o</span><span class="logo-character">c</span><span
-            class="logo-character">i</span><span class="logo-character">a</span><span
-            class="logo-character">t</span><span class="logo-character">i</span><span
-            class="logo-character">o</span><span class="logo-character">n</span></span>
-    </h1>
+    <h1 id="splash-screen" class="logo-header"></h1>
+    <!--
+    <span class="logo">&nbsp;<span id="intro-pt1-letter-1" class="logo-character company-name-first-letter">I</span>
+        <span class="logo-character">n</span>
+        <span class="logo-character">t</span>
+        <span class="logo-character">e</span>
+        <span class="logo-character">g</span>
+        <span class="logo-character">r</span>
+        <span class="logo-character">i</span>
+        <span class="logo-character">t</span>
+        <span class="logo-character">y</span>
+        <span class="logo-character"> a</span>
+        <span class="logo-character">n</span>
+        <span class="logo-character">d</span>
+    </span>
+    <br>
+    <span class="logo">&nbsp;<span id="intro-pt1-letter-2" class="logo-character company-name-first-letter">D</span>
+        <span class="logo-character">e</span>
+        <span class="logo-character">p</span>
+        <span class="logo-character">r</span>
+        <span class="logo-character">a</span>
+        <span class="logo-character">v</span>
+        <span class="logo-character">a</span>
+        <span class="logo-character">t</span>
+        <span class="logo-character">i</span>
+        <span class="logo-character">o</span>
+        <span class="logo-character">n</span>
+    </span>
+    <br>
+    <span class="logo">&nbsp;<span id="intro-pt1-letter-3" class="logo-character company-name-first-letter">E</span>
+        <span class="logo-character">n</span>
+        <span class="logo-character">i</span>
+        <span class="logo-character">g</span>
+        <span class="logo-character">m</span>
+        <span class="logo-character">a</span>
+        <span class="logo-character">t</span>
+        <span class="logo-character">i</span>
+        <span class="logo-character">c</span>
+    </span>
+    <br>
+    <span class="logo">&nbsp;<span id="intro-pt1-letter-4" class="logo-character company-name-first-letter">A</span>
+        <span class="logo-character">s</span>
+        <span class="logo-character">s</span>
+        <span class="logo-character">o</span>
+        <span class="logo-character">c</span>
+        <span class="logo-character">i</span>
+        <span class="logo-character">a</span>
+        <span class="logo-character">t</span>
+        <span class="logo-character">i</span>
+        <span class="logo-character">o</span>
+        <span class="logo-character">n</span>
+    </span>
+    -->
 </div>
 <div class="loading">
     <img src="img/logo/Logo_Ig.png" alt="loading_logo" style="height: 100%; object-fit: contain;">
@@ -400,6 +424,7 @@
     if (currentDomain === 'localhost') {
         debug = true;
     }
+
     // Set Message for Prevention of inspection
     let sanity_check = [
         {"message": "這是不是你該看的地方", "action": null, "value": null},
@@ -415,9 +440,9 @@
         {"message": "現在還來得及回頭的", "action": null, "value": null},
         {"message": "回去你來的地方，不要回頭", "action": null, "value": null},
         {"message": "不然你會被...", "action": null, "value": null},
-        {"message": "...", "action": null, "value": null},
         {"message": "..", "action": null, "value": null},
         {"message": ".", "action": null, "value": null},
+        {"message": "...", "action": null, "value": null},
         {
             "message": "...被Rick Roll的",
             "action": "sneak_open_new_tab",
@@ -431,6 +456,36 @@
 
     // Prevent inspection of code in browser
     window.onload = function () {
+        let company_name = [
+            "Integrity and",
+            "Depravation",
+            "Enigmatic",
+            "Association"
+        ]
+        let splash_container = document.getElementById("splash-screen");
+        for (let i = 0; i < company_name.length; i++) {
+            // <span class="logo">
+            let line_span = document.createElement('span');
+            line_span.innerHTML = "&nbsp;";
+            let line_br = document.createElement('br');
+            line_span.className = "logo";
+            let line = company_name[i];
+            for (let j = 0; j < line.length; j++) {
+                // <span id="intro-pt1-letter-1" class="logo-character company-name-first-letter">I</span>
+                // <span class="logo-character">n</span>
+                let word_span = document.createElement('span');
+                word_span.className = "logo-character";
+                if (j === 0) {
+                    word_span.id = "intro-pt1-letter-" + (i + 1).toString();
+                    word_span.className = "logo-character company-name-first-letter"
+                }
+                word_span.textContent = line[j];
+                line_span.appendChild(word_span);
+            }
+            splash_container.appendChild(line_span);
+            splash_container.appendChild(line_br);
+        }
+
         document.addEventListener("contextmenu", function (e) {
             e.preventDefault();
         }, false);
@@ -482,6 +537,12 @@
             }
             return false;
         }
+
+        if (debug === true) {
+            document.querySelector(".intro").style.top = '-100vh';
+            return false;
+        }
+        splash_screen();
     }
 
     // random dice
@@ -505,7 +566,7 @@
         audioPlayer.play();
         var fadeInInterval = setInterval(function () {
             if (audioPlayer.volume < targetVolume) {
-                console.log(audioPlayer.volume);
+                // console.log(audioPlayer.volume);
                 audioPlayer.volume += volumeIncrement;
             } else {
                 clearInterval(fadeInInterval); // Stop the interval when volume reaches 1
@@ -524,6 +585,7 @@
         {"path": "pages/character.html", "name": "預設角色", "alt_name": "character", "hidden": false},
         {"path": "pages/character_situation.html", "name": "角色現況", "alt_name": "character_situation", "hidden": true},
     ];
+    const characterSituationHtml = "pages/character_situation.html";
     for (const menuArrayElement of menuArray) {
         if (menuArrayElement.hidden) continue;
         sideMenuElement.append(
@@ -535,31 +597,75 @@
         );
     }
     let urlParams = new URLSearchParams(window.location.search);
-    let check_if_toast = urlParams.has('page');
-    if (check_if_toast) {
-        let page_name = urlParams.get('page');
-        for (const menuArrayElement of menuArray) {
-            if (page_name === menuArrayElement.name || page_name === menuArrayElement.alt_name) {
-                document.getElementById('main_frame').src = menuArrayElement.path;
+    let check_if_page = urlParams.has('page');
+    set_page();
+    function set_page() {
+        if (check_if_page) {
+            let page_name = urlParams.get('page');
+            if (page_name === '角色現況' || page_name === 'character_situation') {
+                let extra_param = []
+                if (urlParams.has('chara')) {
+                    extra_param.push("chara=" + urlParams.get('chara'));
+                }
+                extra_param.length > 0 ?
+                    document.getElementById('main_frame').src = characterSituationHtml + "?" + extra_param.join("&") :
+                    document.getElementById('main_frame').src = characterSituationHtml
                 window.history.replaceState(null, '', window.location.pathname);
                 window.history.pushState(null, '', window.location.pathname);
-                break
+                return false;
+            }
+            for (const menuArrayElement of menuArray) {
+                if (page_name === menuArrayElement.name || page_name === menuArrayElement.alt_name) {
+                    document.getElementById('main_frame').src = menuArrayElement.path;
+                    window.history.replaceState(null, '', window.location.pathname);
+                    window.history.pushState(null, '', window.location.pathname);
+                    break
+                }
             }
         }
     }
 
-    // intro animation
-    let intro = document.querySelector(".intro");
-    let logoSpan = document.querySelectorAll(".logo");
-    let companyNameFirstLetter = document.querySelectorAll(".company-name-first-letter");
-    let timeoutOffSet = 0;
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        navStatus = false;
+    }
 
-    window.addEventListener("DOMContentLoaded", () => {
-        blur();
-        if (debug === true) {
-            intro.style.top = '-100vh';
-            return false;
+    function toggleNav() {
+        if (navStatus) {
+            document.getElementById("mySidebar").style.width = "0";
+            navStatus = false;
+        } else {
+            document.getElementById("mySidebar").style.width = "250px";
+            navStatus = true;
         }
+    }
+
+    function change_frame_content(path) {
+        let loading_screen = document.querySelector(".loading");
+        closeNav();
+        setTimeout(() => {
+            loading_screen.style.top = '0';
+        }, 0)  //pull up intro
+
+        setTimeout(() => {
+            document.getElementById('main_frame').src = path;
+        }, 750)  //pull up intro
+
+        setTimeout(() => {
+            loading_screen.style.top = '-100vh';
+        }, 1500)  //pull up intro
+
+    }
+
+    // intro animation
+    function splash_screen() {
+        let intro = document.querySelector(".intro");
+        let logoSpan = document.querySelectorAll(".logo");
+        let companyNameFirstLetter = document.querySelectorAll(".company-name-first-letter");
+        let timeoutOffSet = 0;
+
+        blur();
+        intro.style.top = '0vh';
         setTimeout(() => {
             logoSpan.forEach((span, idx) => {
                 setTimeout(() => {
@@ -627,38 +733,6 @@
                 introFinish = true;
             })
         })
-    })
-
-    function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-        navStatus = false;
-    }
-
-    function toggleNav() {
-        if (navStatus) {
-            document.getElementById("mySidebar").style.width = "0";
-            navStatus = false;
-        } else {
-            document.getElementById("mySidebar").style.width = "250px";
-            navStatus = true;
-        }
-    }
-
-    function change_frame_content(path) {
-        let loading_screen = document.querySelector(".loading");
-        closeNav();
-        setTimeout(() => {
-            loading_screen.style.top = '0';
-        }, 0)  //pull up intro
-
-        setTimeout(() => {
-            document.getElementById('main_frame').src = path;
-        }, 750)  //pull up intro
-
-        setTimeout(() => {
-            loading_screen.style.top = '-100vh';
-        }, 1500)  //pull up intro
-
     }
 </script>
 </body>
