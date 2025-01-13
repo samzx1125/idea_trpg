@@ -565,6 +565,7 @@
         audioPlayer.muted = false;
         audioPlayer.play();
         var fadeInInterval = setInterval(function () {
+
             if (audioPlayer.volume < targetVolume) {
                 // console.log(audioPlayer.volume);
                 audioPlayer.volume += volumeIncrement;
@@ -584,6 +585,7 @@
         {"path": "pages/enrolment_method.html", "name": "報名須知", "alt_name": "enrolment", "hidden": false},
         {"path": "pages/character.html", "name": "預設角色", "alt_name": "character", "hidden": false},
         {"path": "pages/character_situation.html", "name": "角色現況", "alt_name": "character_situation", "hidden": true},
+        {"path": "pages/tarot.html", "name": "タロット", "alt_name": "tarot", "hidden": true},
     ];
     const characterSituationHtml = "pages/character_situation.html";
     for (const menuArrayElement of menuArray) {
@@ -591,6 +593,8 @@
         sideMenuElement.append(
             "<a onclick=\"change_frame_content('" +
             menuArrayElement.path +
+            "', '" +
+            menuArrayElement.name +
             "')\">" +
             menuArrayElement.name +
             "</a>"
@@ -619,6 +623,7 @@
                     document.getElementById('main_frame').src = menuArrayElement.path;
                     window.history.replaceState(null, '', window.location.pathname);
                     window.history.pushState(null, '', window.location.pathname);
+                    document.title = menuArrayElement.name + " - IdeaTRPG";
                     break
                 }
             }
@@ -640,7 +645,7 @@
         }
     }
 
-    function change_frame_content(path) {
+    function change_frame_content(path, name) {
         let loading_screen = document.querySelector(".loading");
         closeNav();
         setTimeout(() => {
@@ -649,6 +654,7 @@
 
         setTimeout(() => {
             document.getElementById('main_frame').src = path;
+            document.title = name + " - IdeaTRPG";
         }, 750)  //pull up intro
 
         setTimeout(() => {
