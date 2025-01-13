@@ -200,6 +200,10 @@
             color: red !important;
         }
 
+        .uk-button {
+            z-index: 9999;
+        }
+
         .tarot-card {
             margin-right: 5px;
         }
@@ -224,7 +228,7 @@
     </div>
     <div class="uk-width-1-1 uk-padding-remove" style="height: max-content" uk-grid>
         <div class="uk-width-1-2@m uk-width-1-1@s uk-height-large@s uk-inline uk-section uk-padding-remove"
-             style="height: 40px;">
+             style="min-height: 40px; height: fit-content;">
             <div class="uk-margin-medium-left uk-margin-medium-bottom uk-container text-white"
                  style="height: 40px">
                 <div>
@@ -238,7 +242,7 @@
         <div class="uk-width-1-2@m uk-width-1-1@s uk-height-large@s uk-inline uk-section uk-padding-remove"
              style="min-height: 40px;">
             <div class="uk-position-bottom uk-margin-medium-left uk-margin-medium-bottom uk-container text-white"
-                 style="height: 40px" id="id_tarot_container">
+                 style="height: 40px;" id="id_tarot_container">
                 <div class="row" id="id_tarot_target"><br>
                 </div>
             </div>
@@ -356,7 +360,7 @@
     function tarot_add_line() {
         document.getElementById("id_tarot_target").id = "";
         $("#id_tarot_container").html($("#id_tarot_container").html() + `
-            <div class="row tarot-new-row" id="id_tarot_target"></div>
+            <div class="row tarot-new-row" id="id_tarot_target">次の項目<br></div>
         `)
     }
 </script>
