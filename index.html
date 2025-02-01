@@ -184,7 +184,7 @@
             animation-iteration-count: infinite;
         }
 
-        .intro {
+        .intro{
             position: fixed;
             z-index: 3;
             left: 0;
@@ -194,6 +194,7 @@
             background-color: var(--intro-background-color);
             transition: 0.8s;
             cursor: default;
+            --long-side: 100px;
         }
 
         .intro .text-hidden {
@@ -223,7 +224,7 @@
             white-space: nowrap;
         }
 
-        .logo {
+        .logo-header .logo {
             position: relative;
             display: inline-block;
             bottom: -20px;
@@ -322,6 +323,10 @@
         #id_content {
             transition: margin-left .5s;
         }
+
+        .heptagon {
+            clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%)
+        }
     </style>
 </head>
 <body style="margin: 0; background-color: black;" id="id_body">
@@ -382,7 +387,7 @@
     -->
 </div>
 <div class="loading">
-    <img src="img/logo/Logo_Ig.png" alt="loading_logo" style="height: 100%; object-fit: contain;">
+    <img class="loading-logo" src="img/logo/Logo_Ig.png" alt="loading_logo" style="height: 100%; object-fit: contain;">
 </div>
 
 <div id="mySidebar" class="sidebar">
@@ -413,16 +418,24 @@
     <div class="uk-width-1-1 uk-margin-remove uk-padding-remove"
          id="id_frame_container"
          style="overflow-y: scroll;">
-        <iframe id="main_frame" style="height: 100%; width: 100%" src="pages/introduction.html"></iframe>
+        <iframe id="main_frame" style="height: 100%; width: 100%" src="pages/front_page.html"></iframe>
     </div>
 </div>
 
 <script type="application/javascript">
     let debug = false;
+    let debug_pass = '0611';
+    let default_first_page = 'pages/front_page.html';
+
     let currentDomain = window.location.hostname;
     console.log("currentDomain", currentDomain);
+    let urlParams = new URLSearchParams(window.location.search);
     if (currentDomain === 'localhost') {
         debug = true;
+    }else if (urlParams.has('debug')&&urlParams.has('pass')) {
+        if (urlParams.get('debug') === 'true' && urlParams.get('pass') === debug_pass) {
+            debug = true;
+        }
     }
 
     // Set Message for Prevention of inspection
@@ -454,7 +467,7 @@
     let introFinish = true;
     let navStatus = false;
 
-    // Prevent inspection of code in browser
+    // window onload
     window.onload = function () {
         let company_name = [
             "Integrity and",
@@ -486,6 +499,7 @@
             splash_container.appendChild(line_br);
         }
 
+        // Prevent inspection of code in browser
         document.addEventListener("contextmenu", function (e) {
             e.preventDefault();
         }, false);
@@ -580,10 +594,11 @@
     const sideMenuElement = $('#mySidebar');
 
     const menuArray = [
+        {"path": "pages/front_page.html", "name": "首頁", "alt_name": "front_page", "hidden": false},
         {"path": "pages/introduction.html", "name": "關於我們", "alt_name": "introduction", "hidden": false},
         {"path": "pages/script_and_poster.html", "name": "劇本存放區", "alt_name": "poster", "hidden": false},
         {"path": "pages/enrolment_method.html", "name": "報名須知", "alt_name": "enrolment", "hidden": false},
-        {"path": "pages/character.html", "name": "預設角色", "alt_name": "character", "hidden": false},
+        {"path": "pages/character.html", "name": "預設角色", "alt_name": "character", "hidden": true},
         {"path": "pages/character_situation.html", "name": "角色現況", "alt_name": "character_situation", "hidden": true},
         {"path": "pages/tarot.html", "name": "タロット", "alt_name": "tarot", "hidden": true},
     ];
@@ -600,7 +615,6 @@
             "</a>"
         );
     }
-    let urlParams = new URLSearchParams(window.location.search);
     let check_if_page = urlParams.has('page');
     set_page();
     function set_page() {
@@ -614,19 +628,21 @@
                 extra_param.length > 0 ?
                     document.getElementById('main_frame').src = characterSituationHtml + "?" + extra_param.join("&") :
                     document.getElementById('main_frame').src = characterSituationHtml
-                window.history.replaceState(null, '', window.location.pathname);
-                window.history.pushState(null, '', window.location.pathname);
                 return false;
             }
             for (const menuArrayElement of menuArray) {
                 if (page_name === menuArrayElement.name || page_name === menuArrayElement.alt_name) {
                     document.getElementById('main_frame').src = menuArrayElement.path;
-                    window.history.replaceState(null, '', window.location.pathname);
-                    window.history.pushState(null, '', window.location.pathname);
                     document.title = menuArrayElement.name + " - IdeaTRPG";
                     break
                 }
             }
+            if (debug === false) {
+                window.history.replaceState(null, '', window.location.pathname);
+                window.history.pushState(null, '', window.location.pathname);
+            }
+        } else {
+            document.getElementById('main_frame').src = default_first_page;
         }
     }
 

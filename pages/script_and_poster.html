@@ -43,53 +43,83 @@
             font-family: "Chase Zen Blight";
             src: url('/font/English/CHASEZENBLIGHT.ttf');
         }
+
         @font-face {
             font-family: "DIN Condensed Bold";
             src: url('/font/English/DIN Condensed Bold.ttf');
         }
+
         @font-face {
             font-family: "DragonForcE";
             src: url('/font/English/DragonForcE.ttf');
         }
+
         @font-face {
             font-family: "Kremlin";
             src: url('/font/English/Kremlin.ttf');
         }
+
         @font-face {
             font-family: "Baoli";
             src: url('/font/Chinese/Baoli.ttc');
         }
-        :root{
+
+        :root {
             --background-color: black;
             --intro-background-color: #161616
         }
+
         @keyframes breathing {
-          0% { transform: translate(0rem, 0rem) rotate(0deg); }
+            0% {
+                transform: translate(0rem, 0rem) rotate(0deg);
+            }
 
-          18% { transform: translate(0rem, 0.5rem) rotate(0deg); }
-          22% { transform: translate(0rem, 0.75rem) rotate(0deg); }
-          28% { transform: translate(0rem, 0.75rem) rotate(0deg); }
-          32% { transform: translate(0rem, 0.5rem) rotate(0deg); }
+            18% {
+                transform: translate(0rem, 0.5rem) rotate(0deg);
+            }
+            22% {
+                transform: translate(0rem, 0.75rem) rotate(0deg);
+            }
+            28% {
+                transform: translate(0rem, 0.75rem) rotate(0deg);
+            }
+            32% {
+                transform: translate(0rem, 0.5rem) rotate(0deg);
+            }
 
-          50% { transform: translate(0rem, 0rem) rotate(0deg); }
+            50% {
+                transform: translate(0rem, 0rem) rotate(0deg);
+            }
 
-          68% { transform: translate(0rem, -0.5rem) rotate(0deg); }
-          72% { transform: translate(0rem, -0.75rem) rotate(0deg); }
-          78% { transform: translate(0rem, -0.75rem) rotate(0deg); }
-          82% { transform: translate(0rem, -0.5rem) rotate(0deg); }
+            68% {
+                transform: translate(0rem, -0.5rem) rotate(0deg);
+            }
+            72% {
+                transform: translate(0rem, -0.75rem) rotate(0deg);
+            }
+            78% {
+                transform: translate(0rem, -0.75rem) rotate(0deg);
+            }
+            82% {
+                transform: translate(0rem, -0.5rem) rotate(0deg);
+            }
 
-          100% { transform: translate(0rem, 0rem) rotate(0deg); }
+            100% {
+                transform: translate(0rem, 0rem) rotate(0deg);
+            }
         }
     </style>
     <style>
         html {
-            background-color:var(--background-color);
+            background-color: var(--background-color);
         }
+
         .breathing-animation {
             animation: breathing 6s;
             animation-iteration-count: infinite;
         }
-        .intro{
+
+        .intro {
             position: fixed;
             z-index: 3;
             left: 0;
@@ -99,10 +129,12 @@
             background-color: var(--intro-background-color);
             transition: 0.8s;
         }
-        .intro .text-hidden{
+
+        .intro .text-hidden {
             color: var(--intro-background-color);
             transition: ease-in-out 0.75s;
         }
+
         .logo-header {
             position: absolute;
             top: 40%;
@@ -111,37 +143,45 @@
             color: #FFFFFF;
             white-space: nowrap;
         }
-        .logo{
+
+        .logo {
             position: relative;
             display: inline-block;
             bottom: -20px;
             opacity: 0;
             height: 2.25rem
         }
-        .logo.active{
+
+        .logo.active {
             bottom: 0;
             opacity: 1;
             transition: ease 0.5s;
         }
-        .logo.fade{
+
+        .logo.fade {
             bottom: 150px;
             opacity: 0;
             transition: ease 0.75s;
         }
-        .logo-character{
+
+        .logo-character {
             font-size: 1rem;
             font-family: "Chase Zen Blight";
         }
-        .logo-character.readable-font{
+
+        .logo-character.readable-font {
             font-size: 2.25rem;
             font-family: DragonForcE;
         }
+
         .transition-linear {
             transition: linear 1s;
         }
+
         .transition-ease-in-out {
             transition: ease-in-out 0.75s;
         }
+
         .text-hidden-pt2 {
             font-size: 0 !important;
             transition: ease 0.5s;
@@ -192,11 +232,11 @@
             font-family: DragonForcE, Baoli;
         }
 
-        .font-DragonForcE{
+        .font-DragonForcE {
             font-family: DragonForcE;
         }
 
-        .uk-lightbox-button, .uk-slidenav{
+        .uk-lightbox-button, .uk-slidenav {
             color: red !important;
         }
     </style>
@@ -207,12 +247,91 @@
 
     <!--Section Script Poster-->
     <div class="uk-margin-small uk-width-1-1">
-        <h1 class="uk-text-center section-header font-Baoli">劇本存放區<br><s class="text-hidden">儀式紀錄</s></h1>
+        <h1 class="uk-text-center section-header font-Baoli">劇本存放區</h1>
+    </div>
+
+    <div class="uk-margin-small uk-width-1-1">
+        <h1 class="uk-text-center font-Baoli">入門</h1>
     </div>
 
     <div class="uk-margin-small uk-width-1-1 uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
          uk-slider="center: true">
-        <div class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-2@s" id="id_script_lightbox" uk-grid
+        <div class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-2@s" id="id_beginner_script" uk-grid
+             uk-lightbox="animation: slide"></div>
+
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-slidenav-large" href uk-slidenav-previous
+           uk-slider-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-slidenav-large" href uk-slidenav-next
+           uk-slider-item="next"></a>
+    </div>
+
+    <div class="uk-margin-small uk-width-1-1">
+        <h1 class="uk-text-center font-Baoli">初級</h1>
+    </div>
+
+    <div class="uk-margin-small uk-width-1-1 uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
+         uk-slider="center: true">
+        <div class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-2@s" id="id_basic_script" uk-grid
+             uk-lightbox="animation: slide"></div>
+
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-slidenav-large" href uk-slidenav-previous
+           uk-slider-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-slidenav-large" href uk-slidenav-next
+           uk-slider-item="next"></a>
+    </div>
+
+    <div class="uk-margin-small uk-width-1-1">
+        <h1 class="uk-text-center font-Baoli">中級</h1>
+    </div>
+
+    <div class="uk-margin-small uk-width-1-1 uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
+         uk-slider="center: true">
+        <div class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-2@s" id="id_middle_script" uk-grid
+             uk-lightbox="animation: slide"></div>
+
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-slidenav-large" href uk-slidenav-previous
+           uk-slider-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-slidenav-large" href uk-slidenav-next
+           uk-slider-item="next"></a>
+    </div>
+
+    <div class="uk-margin-small uk-width-1-1">
+        <h1 class="uk-text-center font-Baoli">高級</h1>
+    </div>
+
+    <div class="uk-margin-small uk-width-1-1 uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
+         uk-slider="center: true">
+        <div class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-2@s" id="id_high_script" uk-grid
+             uk-lightbox="animation: slide"></div>
+
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-slidenav-large" href uk-slidenav-previous
+           uk-slider-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-slidenav-large" href uk-slidenav-next
+           uk-slider-item="next"></a>
+    </div>
+
+    <div class="uk-margin-small uk-width-1-1">
+        <h1 class="uk-text-center font-Baoli">失衡級</h1>
+    </div>
+
+    <div class="uk-margin-small uk-width-1-1 uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
+         uk-slider="center: true">
+        <div class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-2@s" id="id_chaos_script" uk-grid
+             uk-lightbox="animation: slide"></div>
+
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-slidenav-large" href uk-slidenav-previous
+           uk-slider-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-slidenav-large" href uk-slidenav-next
+           uk-slider-item="next"></a>
+    </div>
+
+    <div class="uk-margin-small uk-width-1-1">
+        <h1 class="uk-text-center font-Baoli">幕間</h1>
+    </div>
+
+    <div class="uk-margin-small uk-width-1-1 uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
+         uk-slider="center: true">
+        <div class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-2@s" id="id_makuai_script" uk-grid
              uk-lightbox="animation: slide"></div>
 
         <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-slidenav-large" href uk-slidenav-previous
@@ -230,16 +349,82 @@
 <script type="application/javascript">
     // Define the directory path
     const posterDirectory = '/img/script_poster/';
-    const posterShowCaseLightBox = $('#id_script_lightbox');
-
     const posterArray = [
-        {"path": "Poster_GD_O.png", "name": "鬼門開", "caption": "[入門]鬼門開"},
-        {"path": "Poster_KS_AC_KR_MC.JPG", "name": "神奇寶寶的回家路", "caption": "[初階]神奇寶寶的回家路"},
-        {"path": "Poster_AA_AA.png", "name": "呀呃啊啊", "caption": "[外傳]呀呃啊啊"},
-        {"path": "Poster_UM_IB_TI_BS.png", "name": "［高難度］離海洋最遙遠的地方", "caption": "[失衡]離海洋最遙遠的地方"},
+        {"difficulty": "basic", "path": "Poster_Kimonn_Kai.jpg", "name": "鬼門開", "caption": "鬼門開"},
+        {"difficulty": "basic", "path": "Poster_AkaChan_no_KitakuRou.jpg", "name": "神奇寶寶的回家路", "caption": "神奇寶寶的回家路"},
+        {"difficulty": "chaos", "path": "Poster_Umi_ni_IchibannToiBasyo.jpg", "name": "離海洋最遙遠的地方", "caption": "離海洋最遙遠的地方"},
+        {"difficulty": "middle", "path": "Poster_EiSatu.jpg", "name": "崽煞", "caption": "崽煞"},
+        {"difficulty": "beginner", "path": "Poster_Uruwashi_Sinkai_Gakuenn.jpg", "name": "美艷的深海校園", "caption": "美艷的深海校園"},
+        {"difficulty": "middle", "path": "Poster_Shituu_Hattatsu.jpg", "name": "四通八達", "caption": "四通八達"},
+        {"difficulty": "high", "path": "Poster_Josai_no_Kadokado.jpg", "name": "圍在城市的每一個角落", "caption": "圍在城市的每一個角落"},
+        {"difficulty": "high", "path": "Poster_Kazashi_Soushiki.jpg", "name": "髮釵喪禮", "caption": "髮釵喪禮"},
+        {"difficulty": "makuai", "path": "Poster_Makuai.jpg", "name": "幕間", "caption": "幕間"},
     ];
+
+    const beginnerPosterShowCaseLightBox = $('#id_beginner_script');
     for (const posterElement of posterArray) {
-        posterShowCaseLightBox.append(
+        if (posterElement.difficulty !== 'beginner') {continue}
+        beginnerPosterShowCaseLightBox.append(
+            '<div>' +
+            '<a class="uk-inline" href="' + posterDirectory + posterElement.path + '" data-caption="' + posterElement.caption + '" uk-lightbox="{group:\'script-poster\'}">' +
+            "<img src='" + posterDirectory + posterElement.path + "' width='1800' height='1200' alt='" + posterElement.name + "' loading=\"eager\">" +
+            "</a>" +
+            "</div>"
+        );
+    }
+
+    const basicPosterShowCaseLightBox = $('#id_basic_script');
+    for (const posterElement of posterArray) {
+        if (posterElement.difficulty !== 'basic') {continue}
+        basicPosterShowCaseLightBox.append(
+            '<div>' +
+            '<a class="uk-inline" href="' + posterDirectory + posterElement.path + '" data-caption="' + posterElement.caption + '" uk-lightbox="{group:\'script-poster\'}">' +
+            "<img src='" + posterDirectory + posterElement.path + "' width='1800' height='1200' alt='" + posterElement.name + "' loading=\"eager\">" +
+            "</a>" +
+            "</div>"
+        );
+    }
+
+    const middlePosterShowCaseLightBox = $('#id_middle_script');
+    for (const posterElement of posterArray) {
+        if (posterElement.difficulty !== 'middle') {continue}
+        middlePosterShowCaseLightBox.append(
+            '<div>' +
+            '<a class="uk-inline" href="' + posterDirectory + posterElement.path + '" data-caption="' + posterElement.caption + '" uk-lightbox="{group:\'script-poster\'}">' +
+            "<img src='" + posterDirectory + posterElement.path + "' width='1800' height='1200' alt='" + posterElement.name + "' loading=\"eager\">" +
+            "</a>" +
+            "</div>"
+        );
+    }
+
+    const highPosterShowCaseLightBox = $('#id_high_script');
+    for (const posterElement of posterArray) {
+        if (posterElement.difficulty !== 'high') {continue}
+        highPosterShowCaseLightBox.append(
+            '<div>' +
+            '<a class="uk-inline" href="' + posterDirectory + posterElement.path + '" data-caption="' + posterElement.caption + '" uk-lightbox="{group:\'script-poster\'}">' +
+            "<img src='" + posterDirectory + posterElement.path + "' width='1800' height='1200' alt='" + posterElement.name + "' loading=\"eager\">" +
+            "</a>" +
+            "</div>"
+        );
+    }
+
+    const chaosPosterShowCaseLightBox = $('#id_chaos_script');
+    for (const posterElement of posterArray) {
+        if (posterElement.difficulty !== 'chaos') {continue}
+        chaosPosterShowCaseLightBox.append(
+            '<div>' +
+            '<a class="uk-inline" href="' + posterDirectory + posterElement.path + '" data-caption="' + posterElement.caption + '" uk-lightbox="{group:\'script-poster\'}">' +
+            "<img src='" + posterDirectory + posterElement.path + "' width='1800' height='1200' alt='" + posterElement.name + "' loading=\"eager\">" +
+            "</a>" +
+            "</div>"
+        );
+    }
+
+    const makuaiPosterShowCaseLightBox = $('#id_makuai_script');
+    for (const posterElement of posterArray) {
+        if (posterElement.difficulty !== 'makuai') {continue}
+        makuaiPosterShowCaseLightBox.append(
             '<div>' +
             '<a class="uk-inline" href="' + posterDirectory + posterElement.path + '" data-caption="' + posterElement.caption + '" uk-lightbox="{group:\'script-poster\'}">' +
             "<img src='" + posterDirectory + posterElement.path + "' width='1800' height='1200' alt='" + posterElement.name + "' loading=\"eager\">" +
