@@ -576,6 +576,7 @@
     audioPlayer.volume = 0;
     document.body.onfocus = function () {
         console.log("first click")
+        if (debug === true) return false;
         audioPlayer.muted = false;
         audioPlayer.play();
         var fadeInInterval = setInterval(function () {
@@ -669,14 +670,17 @@
         }, 0)  //pull up intro
 
         setTimeout(() => {
-            document.getElementById('main_frame').src = path;
             document.title = name + " - IdeaTRPG";
-        }, 750)  //pull up intro
+            document.getElementById('main_frame').addEventListener("load", function() {
+                pull_up_loading();
+            });
+            document.getElementById('main_frame').src = path;
+        }, 750)  //change src
+    }
 
-        setTimeout(() => {
-            loading_screen.style.top = '-100vh';
-        }, 1500)  //pull up intro
-
+    function pull_up_loading() {
+        let loading_screen = document.querySelector(".loading");
+        loading_screen.style.top = '-100vh';
     }
 
     // intro animation

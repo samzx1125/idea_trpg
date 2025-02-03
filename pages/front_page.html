@@ -306,21 +306,19 @@
 
 <script type="application/javascript">
     const fragmentArray = [
-        {"path": "/img/script_poster/Poster_Shituu_Hattatsu_no_desc.jpg", "text": "四通八達", "hidden": false},
-        {"path": "/img/script_poster/Poster_Kazashi_Soushiki_no_desc.jpg", "text": "四通八達", "hidden": false},
-        {"path": "/img/script_poster/Poster_Umi_ni_IchibannToiBasyo_no_desc.jpg", "text": "四通八達", "hidden": false},
-        {"path": "/img/script_poster/Poster_Makuai.jpg", "text": "四通八達", "hidden": false},
-        {"path": "/img/script_poster/Poster_Uruwashi_Sinkai_Gakuenn_no_desc.jpg", "text": "四通八達", "hidden": false},
-        {"path": "/img/script_poster/Poster_Kimonn_Kai_no_desc.jpg", "text": "四通八達", "hidden": false},
+        {"path": "/img/script_poster/Poster_Shituu_Hattatsu_front_resize.jpg", "text": "四通八達", "hidden": false},
+        {"path": "/img/script_poster/Poster_Kazashi_Soushiki_front_resize.jpg", "text": "髮釵喪禮", "hidden": false},
+        {"path": "/img/script_poster/Poster_Umi_ni_IchibannToiBasyo_no_desc.jpg", "text": "離海洋最遙遠的地方", "hidden": false},
+        {"path": "/img/script_poster/Poster_Makuai.jpg", "text": "幕間", "hidden": false},
+        {"path": "/img/script_poster/Poster_Uruwashi_Shinkai_Gakuenn_front_resize.jpg", "text": "美艷的深海校園", "hidden": false},
+        {"path": "/img/script_poster/Poster_Kimonn_Kai_front_resize.jpg", "text": "鬼門開", "hidden": false},
     ];
     let fragment_no = 0
     let fragment_max = 6
     for (const fragmentElement of fragmentArray) {
         if (fragmentElement.hidden) continue;
         fragment_no += 1;
-        if (fragment_no > fragment_max) {
-            break
-        }
+        if (fragment_no > fragment_max) break;
         let element = $('#fragment-' + fragment_no);
         element.append(`<img id="fragment-` + fragment_no + `-img" src="` +
             fragmentElement.path + `" alt="fragment-` + fragment_no +
