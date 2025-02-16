@@ -430,11 +430,14 @@
     let currentDomain = window.location.hostname;
     console.log("currentDomain", currentDomain);
     let urlParams = new URLSearchParams(window.location.search);
-    if (currentDomain === 'localhost') {
-        debug = true;
-    }else if (urlParams.has('debug')&&urlParams.has('pass')) {
-        if (urlParams.get('debug') === 'true' && urlParams.get('pass') === debug_pass) {
-            debug = true;
+    if (urlParams.has('debug')&&urlParams.has('pass')) {
+        if (urlParams.get('pass') === debug_pass) {
+            if (urlParams.get('debug') === 'true') {
+                debug = true;
+            }
+            else if (urlParams.get('debug') === 'false') {
+                debug = false;
+            }
         }
     }
 
@@ -468,7 +471,12 @@
     let navStatus = false;
 
     // window onload
-    window.onload = function () {
+    document.onreadystatechange = function () {
+        if (document.readyState === 'complete')
+        {
+            //dom is ready, window.onload fires later
+            return false;
+        }
         let company_name = [
             "Integrity and",
             "Depravation",
@@ -552,10 +560,10 @@
             return false;
         }
 
-        if (debug === true) {
-            document.querySelector(".intro").style.top = '-100vh';
-            return false;
-        }
+        // if (debug === true) {
+        //     document.querySelector(".intro").style.top = '-100vh';
+        //     return false;
+        // }
         splash_screen();
     }
 
@@ -678,14 +686,15 @@
         }, 750)  //change src
     }
 
+    let loading_screen = document.querySelector(".loading");
     function pull_up_loading() {
-        let loading_screen = document.querySelector(".loading");
         loading_screen.style.top = '-100vh';
     }
 
     // intro animation
+    let intro = document.querySelector(".intro");
     function splash_screen() {
-        let intro = document.querySelector(".intro");
+        // let intro = document.querySelector(".intro");
         let logoSpan = document.querySelectorAll(".logo");
         let companyNameFirstLetter = document.querySelectorAll(".company-name-first-letter");
         let timeoutOffSet = 0;
@@ -751,7 +760,7 @@
             // }, timeoutOffSet)
 
             setTimeout(() => {
-                intro.style.top = '-100vh';
+                pull_up_intro()
             }, timeoutOffSet)  //pull up intro
             timeoutOffSet += 1000;
 
@@ -759,6 +768,16 @@
                 introFinish = true;
             })
         })
+    }
+
+    function pull_up_intro() {
+        if (document.readyState === "complete") {
+            intro.style.top = '-100vh';
+            return false;
+        }
+        setTimeout(() => {
+            pull_up_intro();
+        }, 1000)  //pull up intro
     }
 </script>
 </body>
