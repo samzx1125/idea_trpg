@@ -205,75 +205,76 @@
 <div id="id_content" class="uk-margin-remove uk-grid-collapse uk-dark" uk-grid>
     <div class="uk-width-1-1">&nbsp;</div>
 
-    <!--Section Cost and Register-->
+    <!--Section Script Poster-->
     <div class="uk-margin-small uk-width-1-1">
-        <h1 class="uk-text-center section-header font-Baoli">報名需知<br><s class="text-hidden">獻祭條件</s></h1>
+        <h1 class="uk-text-center section-header font-Baoli">Test<br><s class="text-hidden">儀式紀錄</s></h1>
     </div>
-    <div class="uk-width-1-1 uk-padding-remove" style="height: max-content" uk-grid>
-        <div class="uk-width-1-2@m uk-width-1-1@s">
-            <img src="/img/cost/Cost.png" loading="eager">
-        </div>
-        <div class="uk-width-1-2@m uk-width-1-1@s uk-height-large@s uk-inline uk-section uk-padding-remove-top"
-             style="min-height: 360px;">
-            <div class="uk-position-bottom uk-margin-medium-left uk-margin-medium-bottom uk-container text-white"
-                 style="height: 360px">
-                <p class="uk-text-large font-Baoli">
-                    你有<span class="text-red">興趣</span>嗎？以下是報名方法
-                </p>
-                <p class="uk-text-large font-Baoli" style="white-space: pre-line;">
-                    1.上 <span class="text-green text-hover-red hover-pointer"
-                           onclick="window.open('https://www.instagram.com/idea_trpg?igsh=MWMwZHNmcjd3cmZ3MQ==', '_blank')">我地Instagram</span> 睇下最新既News
-                    2.係上面睇定你想跑咩劇本
-                    3.約齊你既戰友，或者自私報名
 
-                </p>
-                <!--<p class="uk-text-large" style="white-space: pre-line;">-->
-                <!--    1.上Instagram 睇下我地既News-->
-                <!--    2.係上面睇定你想跑咩劇本-->
-                <!--    3.約齊你既戰友，或者自私報名-->
-                <!--    4.到下面Google form 填上你既資料-->
-                <!--    5.提交完就可以等我地通知啦-->
-                <!--    6.我地安排好時間會同你確認返booking-->
-                <!--    7.當日帶齊人同供品上黎我地度享受！-->
-                <!--</p>-->
-                <div>
-                    <a class="uk-button uk-button-secondary"
-                       onclick="whatsapp_enrolment()">呢度報名</a>
-                </div>
-            </div>
-        </div>
+    <div class="uk-margin-small uk-width-1-1 uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
+         uk-slider="center: true">
+        <div>HP: <span id="hp"><span id="hp_current"></span>/<span id="hp_max"></span></span></div>
+        <div>MP: <span id="mp"><span id="mp_current"></span>/<span id="mp_max"></span></span></div>
+        <div>SAN: <span id="san"><span id="san_current"></span>/<span id="san_max"></span></span></div>
+        <div>CM: <span id="cm"></span></div>
     </div>
 </div>
 
 <script type="application/javascript">
     // Define the directory path
-    const posterDirectory = '/img/script_poster/';
-    const posterShowCaseLightBox = $('#id_script_lightbox');
+    const initial_data = {
+        hp: 10,
+        mp: 10,
+        san: 70,
+        cm: 0,
 
-    const posterArray = [
-        {"path": "Poster_GD_O.png", "name": "鬼門開"},
-        {"path": "Poster_AA_AA.png", "name": "呀呃啊啊"},
-        {"path": "Poster_UM_IB_TI_BS.png", "name": "［高難度］離海洋最遙遠的地方"},
-        {"path": "Poster_KS_AC_KR_MC.JPG", "name": "神奇寶寶的回家路"},
-    ];
-    for (const posterElement of posterArray) {
-        posterShowCaseLightBox.append(
-            '<div>' +
-            '<a class="uk-inline" href="' + posterDirectory + posterElement.path + '" data-caption="' + posterElement.name + '" uk-lightbox="{group:\'script-poster\'}">' +
-            "<img src='" + posterDirectory + posterElement.path + "' width='1800' height='1200' alt='" + posterElement.name + "'>" +
-            "</a>" +
-            "</div>"
-        );
+        str: 0,
+        dex: 0,
+        con: 0,
+        pow: 0,
+        app: 0,
+    }
+    let hp_current, hp_max, mp_current, mp_max, san_current, san_max, cm;
+    let str, str_temp, str_perm, dex, dex_temp, dex_perm, con, con_temp, con_perm;
+    let pow, pow_temp, pow_perm, app, app_temp, app_perm;
+    let action = null;
+
+    function load_data() {
+        console.log("load_data")
+        let saved_data = null;
+        if (saved_data == null) {
+            hp_current = initial_data.hp;
+            hp_max = initial_data.hp;
+            mp_current = initial_data.mp;
+            mp_max = initial_data.mp;
+            san_current = initial_data.san;
+            san_max = 99 - initial_data.cm;
+            cm = initial_data.cm;
+            return false;
+        }
+        hp_current = saved_data.hp_current;
+        hp_max = saved_data.hp_max;
+        mp_current = saved_data.mp_current;
+        mp_max = saved_data.mp_max;
+        san_current = saved_data.san;
+        san_max = 99 - saved_data.cm;
+        cm = saved_data.cm;
     }
 
-    function whatsapp_enrolment(){
-        const whatsappUrl = "https://wa.me/85290820486";
-        // const whatsappUrl = "https://wa.me/message/756VIDTKGKQ7L1";
-        const queryParams = {text: "您好，我地想報團！\n劇本：\n人數：\n日期：\n\n麻煩你地了！"}
-        const queryString = new URLSearchParams(queryParams).toString();
-
-        window.open(`${whatsappUrl}?${queryString}`, '_blank');
+    function display() {
+        console.log("display")
+        $("#hp_max").text(hp_max);
+        $("#hp_current").text(hp_current);
+        $("#mp_max").text(mp_max);
+        $("#mp_current").text(mp_current);
+        $("#san_max").text(san_max);
+        $("#san_current").text(san_current);
+        $("#cm").text(cm);
     }
+
+    $(document).ready(function() {
+        load_data();
+        display();
+    })
 </script>
 </body>
 </html>
