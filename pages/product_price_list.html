@@ -43,53 +43,83 @@
             font-family: "Chase Zen Blight";
             src: url('/font/English/CHASEZENBLIGHT.ttf');
         }
+
         @font-face {
             font-family: "DIN Condensed Bold";
             src: url('/font/English/DIN Condensed Bold.ttf');
         }
+
         @font-face {
             font-family: "DragonForcE";
             src: url('/font/English/DragonForcE.ttf');
         }
+
         @font-face {
             font-family: "Kremlin";
             src: url('/font/English/Kremlin.ttf');
         }
+
         @font-face {
             font-family: "Baoli";
             src: url('/font/Chinese/Baoli.ttc');
         }
-        :root{
+
+        :root {
             --background-color: black;
             --intro-background-color: #161616
         }
+
         @keyframes breathing {
-          0% { transform: translate(0rem, 0rem) rotate(0deg); }
+            0% {
+                transform: translate(0rem, 0rem) rotate(0deg);
+            }
 
-          18% { transform: translate(0rem, 0.5rem) rotate(0deg); }
-          22% { transform: translate(0rem, 0.75rem) rotate(0deg); }
-          28% { transform: translate(0rem, 0.75rem) rotate(0deg); }
-          32% { transform: translate(0rem, 0.5rem) rotate(0deg); }
+            18% {
+                transform: translate(0rem, 0.5rem) rotate(0deg);
+            }
+            22% {
+                transform: translate(0rem, 0.75rem) rotate(0deg);
+            }
+            28% {
+                transform: translate(0rem, 0.75rem) rotate(0deg);
+            }
+            32% {
+                transform: translate(0rem, 0.5rem) rotate(0deg);
+            }
 
-          50% { transform: translate(0rem, 0rem) rotate(0deg); }
+            50% {
+                transform: translate(0rem, 0rem) rotate(0deg);
+            }
 
-          68% { transform: translate(0rem, -0.5rem) rotate(0deg); }
-          72% { transform: translate(0rem, -0.75rem) rotate(0deg); }
-          78% { transform: translate(0rem, -0.75rem) rotate(0deg); }
-          82% { transform: translate(0rem, -0.5rem) rotate(0deg); }
+            68% {
+                transform: translate(0rem, -0.5rem) rotate(0deg);
+            }
+            72% {
+                transform: translate(0rem, -0.75rem) rotate(0deg);
+            }
+            78% {
+                transform: translate(0rem, -0.75rem) rotate(0deg);
+            }
+            82% {
+                transform: translate(0rem, -0.5rem) rotate(0deg);
+            }
 
-          100% { transform: translate(0rem, 0rem) rotate(0deg); }
+            100% {
+                transform: translate(0rem, 0rem) rotate(0deg);
+            }
         }
     </style>
     <style>
         html {
-            background-color:var(--background-color);
+            background-color: var(--background-color);
         }
+
         .breathing-animation {
             animation: breathing 6s;
             animation-iteration-count: infinite;
         }
-        .intro{
+
+        .intro {
             position: fixed;
             z-index: 3;
             left: 0;
@@ -99,10 +129,12 @@
             background-color: var(--intro-background-color);
             transition: 0.8s;
         }
-        .intro .text-hidden{
+
+        .intro .text-hidden {
             color: var(--intro-background-color);
             transition: ease-in-out 0.75s;
         }
+
         .logo-header {
             position: absolute;
             top: 40%;
@@ -111,41 +143,50 @@
             color: #FFFFFF;
             white-space: nowrap;
         }
-        .logo{
+
+        .logo {
             position: relative;
             display: inline-block;
             bottom: -20px;
             opacity: 0;
             height: 2.25rem
         }
-        .logo.active{
+
+        .logo.active {
             bottom: 0;
             opacity: 1;
             transition: ease 0.5s;
         }
-        .logo.fade{
+
+        .logo.fade {
             bottom: 150px;
             opacity: 0;
             transition: ease 0.75s;
         }
-        .logo-character{
+
+        .logo-character {
             font-size: 1rem;
             font-family: "Chase Zen Blight";
         }
-        .logo-character.readable-font{
+
+        .logo-character.readable-font {
             font-size: 2.25rem;
             font-family: DragonForcE;
         }
+
         .transition-linear {
             transition: linear 1s;
         }
+
         .transition-ease-in-out {
             transition: ease-in-out 0.75s;
         }
+
         .text-hidden-pt2 {
             font-size: 0 !important;
             transition: ease 0.5s;
         }
+
 
         #id_top {
             z-index: 2;
@@ -191,7 +232,7 @@
             font-family: DragonForcE, Baoli;
         }
 
-        .font-DragonForcE{
+        .font-DragonForcE {
             font-family: DragonForcE;
         }
 
@@ -199,7 +240,7 @@
             font-family: "DIN Condensed Bold";
         }
 
-        .uk-lightbox-button, .uk-slidenav{
+        .uk-lightbox-button, .uk-slidenav {
             color: red !important;
         }
     </style>
@@ -208,41 +249,30 @@
 <div id="id_content" class="uk-margin-remove uk-grid-collapse uk-dark" uk-grid>
     <div class="uk-width-1-1">&nbsp;</div>
 
-    <!--Section Cost and Register-->
+    <!--Section Script Poster-->
     <div class="uk-margin-small uk-width-1-1">
-        <h1 class="uk-text-center section-header font-Baoli">報名需知<br><s class="text-hidden">獻祭條件</s></h1>
+        <h1 class="uk-text-center section-header font-Baoli">Product</h1>
     </div>
-    <div class="uk-width-1-1 uk-padding-remove" style="height: max-content" uk-grid>
-        <div class="uk-width-1-2@m uk-width-1-1@s">
-            <img src="/img/cost/Cost.png" loading="eager">
-        </div>
-        <div class="uk-width-1-2@m uk-width-1-1@s uk-height-large@s uk-inline uk-section uk-padding-remove-top"
+
+    <div class="uk-margin-small uk-width-1-2 uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
+         uk-slider="center: true; autoplay: true; autoplay-interval: 6000">
+        <div class="uk-slider-items uk-child-width-1-1" id="id_product_carousel" uk-grid
+             uk-lightbox="animation: slide"></div>
+    </div>
+
+    <div class="uk-margin-small uk-width-1-2">
+        <h1 class="uk-text-center font-Baoli text-white" style="margin-bottom: 0px;">Price List</h1>
+        <div class="uk-width-1-1 uk-height-large uk-inline uk-section uk-padding-remove-top"
              style="min-height: 360px;">
             <div class="uk-position-bottom uk-margin-medium-left uk-margin-medium-bottom uk-container text-white"
                  style="height: 360px">
-                <p class="uk-text-large font-Baoli">
-                    你有<span class="text-red">興趣</span>嗎？以下是報名方法
+                <p class="uk-text-large font-DINCondensed"
+                   style="white-space: pre-line; font-size: 80px;">
+                    Theme folder: HKD 10
+                    "邪神無你符": HKD 20
+                    筆記本: HKD 30
+                    環保袋: HKD 20
                 </p>
-                <p class="uk-text-large font-Baoli" style="white-space: pre-line;">
-                    1.上 <span class="text-green text-hover-red hover-pointer"
-                           onclick="window.open('https://www.instagram.com/idea_trpg?igsh=MWMwZHNmcjd3cmZ3MQ==', '_blank')">我地Instagram</span> 睇下最新既News
-                    2.係上面睇定你想跑咩劇本
-                    3.約齊你既戰友，或者自私報名
-
-                </p>
-                <!--<p class="uk-text-large" style="white-space: pre-line;">-->
-                <!--    1.上Instagram 睇下我地既News-->
-                <!--    2.係上面睇定你想跑咩劇本-->
-                <!--    3.約齊你既戰友，或者自私報名-->
-                <!--    4.到下面Google form 填上你既資料-->
-                <!--    5.提交完就可以等我地通知啦-->
-                <!--    6.我地安排好時間會同你確認返booking-->
-                <!--    7.當日帶齊人同供品上黎我地度享受！-->
-                <!--</p>-->
-                <div>
-                    <a class="uk-button uk-button-secondary"
-                       onclick="whatsapp_enrolment()">呢度報名</a>
-                </div>
             </div>
         </div>
     </div>
@@ -250,32 +280,24 @@
 
 <script type="application/javascript">
     // Define the directory path
-    const posterDirectory = '/img/script_poster/';
-    const posterShowCaseLightBox = $('#id_script_lightbox');
-
+    const posterDirectory = '/img/product/';
     const posterArray = [
-        {"path": "Poster_GD_O.png", "name": "鬼門開"},
-        {"path": "Poster_AA_AA.png", "name": "呀呃啊啊"},
-        {"path": "Poster_UM_IB_TI_BS.png", "name": "［高難度］離海洋最遙遠的地方"},
-        {"path": "Poster_KS_AC_KR_MC.JPG", "name": "神奇寶寶的回家路"},
+        {"path": "product_01.JPG", "name": "Product 01", "caption": "Product 01"},
+        {"path": "product_02.JPG", "name": "Product 02", "caption": "Product 02"},
+        {"path": "product_03.JPG", "name": "Product 03", "caption": "Product 03"},
+        {"path": "product_04.JPG", "name": "Product 04", "caption": "Product 04"},
+        {"path": "product_05.JPG", "name": "Product 05", "caption": "Product 05"},
     ];
+
+    const productCarousel = $('#id_product_carousel');
     for (const posterElement of posterArray) {
-        posterShowCaseLightBox.append(
+        productCarousel.append(
             '<div>' +
-            '<a class="uk-inline" href="' + posterDirectory + posterElement.path + '" data-caption="' + posterElement.name + '" uk-lightbox="{group:\'script-poster\'}">' +
-            "<img src='" + posterDirectory + posterElement.path + "' width='1800' height='1200' alt='" + posterElement.name + "'>" +
+            '<a class="uk-inline" href="' + posterDirectory + posterElement.path + '" data-caption="' + posterElement.caption + '" uk-lightbox="{group:\'script-poster\'}">' +
+            "<img src='" + posterDirectory + posterElement.path + "' width='1800' height='1200' alt='" + posterElement.name + "' loading=\"eager\">" +
             "</a>" +
             "</div>"
         );
-    }
-
-    function whatsapp_enrolment(){
-        const whatsappUrl = "https://wa.me/85290820486";
-        // const whatsappUrl = "https://wa.me/message/756VIDTKGKQ7L1";
-        const queryParams = {text: "您好，我地想報團！\n劇本：\n人數：\n日期：\n\n麻煩你地了！"}
-        const queryString = new URLSearchParams(queryParams).toString();
-
-        window.open(`${whatsappUrl}?${queryString}`, '_blank');
     }
 </script>
 </body>
