@@ -328,7 +328,7 @@
         fragment_no += 1;
         if (fragment_no > fragment_max) break;
         let element = $('#fragment-' + fragment_no);
-        element.append(`<img loading="lazy" id="fragment-` + fragment_no + `-img" src="` +
+        element.append(`<img loading="lazy" width="50vw" height="100vw" id="fragment-` + fragment_no + `-img" src="` +
             fragmentElement.path + `" alt="fragment-` + fragment_no +
             `">`)
     }

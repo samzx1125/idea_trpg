@@ -228,8 +228,12 @@
             cursor: pointer;
         }
 
-        .font-Baoli {
+        .font-Baoli-DragonForcE {
             font-family: DragonForcE, Baoli;
+        }
+
+        .font-Baoli {
+            font-family: Baoli;
         }
 
         .font-DragonForcE {
@@ -237,7 +241,7 @@
         }
 
         .font-DINCondensed{
-            font-family: "DIN Condensed Bold";
+            font-family: "DIN Condensed Bold", Baoli;
         }
 
         .uk-lightbox-button, .uk-slidenav {
@@ -255,6 +259,7 @@
     </div>
 
     <div class="uk-margin-small uk-width-1-2 uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
+         style="max-height: 930px;"
          uk-slider="center: true; autoplay: true; autoplay-interval: 6000">
         <div class="uk-slider-items uk-child-width-1-1" id="id_product_carousel" uk-grid
              uk-lightbox="animation: slide"></div>
@@ -266,12 +271,15 @@
              style="min-height: 360px;">
             <div class="uk-position-bottom uk-margin-medium-left uk-margin-medium-bottom uk-container text-white"
                  style="height: 360px">
-                <p class="uk-text-large font-DINCondensed"
-                   style="white-space: pre-line; font-size: 80px;">
-                    Theme folder: HKD 10
-                    "邪神無你符": HKD 20
-                    筆記本: HKD 30
-                    環保袋: HKD 20
+                <p class="uk-text-large font-Baoli"
+                   style="white-space: pre-line; font-size: 55px; line-height: 1.5">
+                    IDEA 文件夾: HKD 10
+                    IDEA 環保袋: HKD 20
+                    IDEA 平安御守: HKD 20
+                    IDEA 筆記簿: HKD 30
+
+                    每次消費滿HKD <span class="text-red">60</span>，
+                    即送IDEA環保袋乙個
                 </p>
             </div>
         </div>
@@ -294,7 +302,7 @@
         productCarousel.append(
             '<div>' +
             '<a class="uk-inline" href="' + posterDirectory + posterElement.path + '" data-caption="' + posterElement.caption + '" uk-lightbox="{group:\'script-poster\'}">' +
-            "<img src='" + posterDirectory + posterElement.path + "' width='1800' height='1200' alt='" + posterElement.name + "' loading=\"eager\">" +
+            "<img src='" + posterDirectory + posterElement.path + "' width='800' height='800' alt='" + posterElement.name + "' loading=\"eager\">" +
             "</a>" +
             "</div>"
         );
